@@ -7,6 +7,7 @@ Portfólio multidisciplinar do curso de Desenvolvimento de Software Multiplatafo
 - registros de Gestão Ágil, Interação Humano-Computador e Técnicas de Programação II;
 - espaço preparado para outras disciplinas, incluindo Desenvolvimento Web;
 - página detalhada de Interação Humano-Computador com aulas, conceitos, atividades e avaliação;
+- página detalhada de Gestão Ágil com os conceitos e a resolução da lista de exercícios;
 - atividades individuais;
 - acompanhamento do Projeto Integrador;
 - reflexões sobre o aprendizado.
