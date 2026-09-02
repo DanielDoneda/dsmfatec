@@ -76,6 +76,7 @@ h1 span { color: var(--green); }
 
 .activities-section { background: var(--lime); }
 .activity-card { display: grid; grid-template-columns: 1fr 220px; gap: 3rem; padding: clamp(1.5rem, 4vw, 3rem); border: 1px solid var(--ink); border-radius: 1.2rem; background: var(--paper); box-shadow: 10px 10px 0 var(--forest); }
+.activity-card + .activity-card { margin-top: 2rem; }
 .activity-card > div:first-child { max-width: 700px; }
 .activity-card p { line-height: 1.65; }
 .activity-status { display: inline-block; margin-bottom: 2rem; padding: .45rem .8rem; border-radius: 99px; background: var(--mint); font: 500 .72rem "DM Mono", monospace; text-transform: uppercase; }
