@@ -8,6 +8,7 @@ Portfólio multidisciplinar do curso de Desenvolvimento de Software Multiplatafo
 - espaço preparado para outras disciplinas, incluindo Desenvolvimento Web;
 - página detalhada de Interação Humano-Computador com aulas, conceitos, atividades e avaliação;
 - página detalhada de Gestão Ágil com os conceitos e a resolução da lista de exercícios;
+- página detalhada de Técnicas de Programação II com o estudo de Design Patterns para Data Science;
 - controle de atividades com o trabalho de microserviços de Desenvolvimento Web II;
 - atividades individuais;
 - acompanhamento do Projeto Integrador;
@@ -19,4 +20,4 @@ Site estático preparado para publicação na Vercel.
 
 Endereço público planejado: `portfolio.danieldoneda.com.br`. O domínio personalizado será conectado após a primeira publicação.
 
-Atualmente, `index.html` contém uma página temporária de apresentação. A versão em desenvolvimento do portfólio completo está preservada em `portfolio.html`.
+`index.html` contém o portfólio principal. A antiga página temporária foi preservada em `em-construcao.html` apenas como histórico.
