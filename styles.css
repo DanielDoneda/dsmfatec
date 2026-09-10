@@ -46,6 +46,12 @@ h1 span { color: var(--green); }
 .status-card dl div { display: flex; justify-content: space-between; gap: 1rem; padding: .8rem 0; border-bottom: 1px solid rgba(255,255,255,.12); font-size: .82rem; }
 .status-card dt { color: #a9b8b1; }
 .status-card dd { margin: 0; text-align: right; font-weight: 700; }
+.profile-card { align-self: center; overflow: hidden; border: 1px solid var(--line); border-radius: 1.5rem; background: var(--forest); color: var(--white); box-shadow: 0 30px 60px rgba(17,38,31,.18); }
+.profile-card img { display: block; width: 100%; max-height: 300px; object-fit: cover; object-position: center 22%; }
+.profile-card > div { padding: 1.5rem; }
+.profile-card .eyebrow { color: var(--lime); }
+.profile-card h2 { margin-bottom: 1rem; font-size: 2rem; letter-spacing: -.04em; }
+.profile-card ul { margin: 0; padding-left: 1.1rem; color: #dfe8e3; line-height: 1.8; }
 
 .disciplines-section { background: var(--white); }
 .disciplines-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
@@ -140,6 +146,15 @@ footer p { margin: 0; }
 .answer-number { color: var(--green); font: 500 1rem "DM Mono",monospace; }
 .answer-card h3 { margin-bottom: .6rem; font-size: 1.2rem; }
 .answer-card p { max-width: 820px; margin-bottom: 0; color: #53615b; line-height: 1.75; }
+.exercise-list { display: grid; gap: 1rem; }
+.exercise-card { display: grid; grid-template-columns: 54px 1fr; gap: 1.2rem; padding: clamp(1.2rem,3vw,2rem); border: 1px solid var(--line); border-radius: 1rem; background: var(--white); }
+.exercise-card h3 { max-width: 900px; margin-bottom: 1rem; font-size: 1.15rem; line-height: 1.5; }
+.exercise-card p { max-width: 900px; color: #53615b; line-height: 1.75; }
+.options { margin: 0; padding-left: 1.4rem; color: #53615b; line-height: 1.65; }
+.options li { padding: .2rem .4rem; }
+.options .selected { border-radius: .4rem; background: rgba(184,242,213,.65); color: var(--ink); font-weight: 700; }
+.answer-result { display: inline-block; margin: 1rem 0 0 !important; padding: .4rem .7rem; border-radius: 99px; background: var(--forest); color: var(--white) !important; font: 500 .72rem "DM Mono",monospace; text-transform: uppercase; }
+.lesson-reflection { max-width: 780px; margin-top: 1.3rem; padding: 1rem; border-left: 3px solid var(--green); background: rgba(184,242,213,.28); color: var(--ink); line-height: 1.7; }
 .pattern-list { display: grid; grid-template-columns: repeat(2,1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
 .pattern-card { min-height: 220px; display: grid; grid-template-columns: 54px 1fr; gap: 1rem; padding: 1.6rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,.35); }
 .pattern-card > span { color: var(--green); font: 500 .76rem "DM Mono",monospace; }
@@ -156,7 +171,7 @@ footer p { margin: 0; }
   .hero, .section-heading, .pi-intro, .about-section { grid-template-columns: 1fr; }
   .detail-hero { grid-template-columns: 1fr; }
   .section-heading > p:last-child { grid-column: 1; grid-row: auto; }
-  .status-card { max-width: 480px; transform: none; }
+  .status-card, .profile-card { max-width: 480px; transform: none; }
   .pi-grid { grid-template-columns: 1fr 1fr; }
   .topics-grid { grid-template-columns: repeat(2,1fr); }
 }
@@ -179,6 +194,7 @@ footer p { margin: 0; }
   .pattern-list { grid-template-columns: 1fr; }
   .answers-list { grid-template-columns: repeat(2,1fr); }
   .lesson-detail-head { grid-template-columns: 70px 1fr; gap: 1rem; }
+  .exercise-card { grid-template-columns: 1fr; }
   .pi-card { min-height: auto; }
   .pi-card h3 { margin-top: 2.5rem; }
 }
