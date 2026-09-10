@@ -9,7 +9,7 @@ Portfólio multidisciplinar do curso de Desenvolvimento de Software Multiplatafo
 - página detalhada de Interação Humano-Computador com aulas, conceitos, atividades e avaliação;
 - página detalhada de Gestão Ágil com os conceitos e a resolução da lista de exercícios;
 - página detalhada de Técnicas de Programação II com o estudo de Design Patterns para Data Science;
-- controle de atividades com o trabalho de microserviços de Desenvolvimento Web II;
+- controle de atividades com o trabalho entregue de microserviços de Desenvolvimento Web III;
 - atividades individuais;
 - acompanhamento do Projeto Integrador;
 - reflexões sobre o aprendizado.
