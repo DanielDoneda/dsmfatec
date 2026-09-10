@@ -141,9 +141,6 @@ footer p { margin: 0; }
 .download-link:hover, .download-link:focus-visible { background: var(--green); }
 .activity-document-section { background: var(--white); }
 .portfolio-activity { max-width: 980px; margin-left: auto; }
-.activity-identification { display: grid; grid-template-columns: repeat(2,1fr); margin-bottom: 3rem; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
-.activity-identification div { display: flex; flex-direction: column; gap: .35rem; padding: 1rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.activity-identification span { color: var(--green); font: 500 .7rem "DM Mono",monospace; text-transform: uppercase; }
 .activity-text p, .prompt-record > p:last-child, .activity-personal-comment > p:last-child { max-width: 850px; line-height: 1.85; }
 .word-count { display: inline-block; margin-top: .4rem; color: var(--green); font: 500 .72rem "DM Mono",monospace; text-transform: uppercase; }
 .prompt-record, .activity-personal-comment { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--line); }
@@ -200,7 +197,6 @@ footer p { margin: 0; }
   .activity-card { grid-template-columns: 1fr; box-shadow: 6px 6px 0 var(--forest); }
   .disciplines-grid { grid-template-columns: 1fr; }
   .activity-meta { padding: 1.3rem 0 0; border-left: 0; border-top: 1px solid var(--line); }
-  .activity-identification { grid-template-columns: 1fr; }
   .pi-grid { grid-template-columns: 1fr; }
   .topics-grid, .tasks-grid { grid-template-columns: 1fr; }
   .pattern-list { grid-template-columns: 1fr; }
