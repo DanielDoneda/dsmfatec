@@ -137,6 +137,8 @@ footer p { margin: 0; }
 .task-card p, .task-card li { color: #53615b; line-height: 1.65; }
 .deadline-card { background: var(--lime); }
 .deadline { display: inline-block; margin-top: 1rem; padding: .5rem .8rem; border-radius: 99px; background: var(--forest); color: var(--white); font: 500 .74rem "DM Mono",monospace; }
+.download-link { display: inline-block; margin-top: .8rem; padding: .7rem 1rem; border-radius: 99px; background: var(--forest); color: var(--white); text-decoration: none; font: 500 .74rem "DM Mono",monospace; }
+.download-link:hover, .download-link:focus-visible { background: var(--green); }
 .answers-list { display: grid; grid-template-columns: repeat(3,1fr); gap: .7rem; margin: 0; padding: 0; list-style: none; }
 .answers-list li { display: flex; align-items: center; justify-content: space-between; padding: 1rem; border: 1px solid var(--line); border-radius: .8rem; background: var(--white); }
 .answers-list span { color: var(--green); font: 500 .72rem "DM Mono",monospace; }
