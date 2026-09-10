@@ -139,6 +139,22 @@ footer p { margin: 0; }
 .task-card .task-type { color: var(--green); font: 500 .7rem "DM Mono",monospace; text-transform: uppercase; }
 .task-card h3 { margin: 1.5rem 0 .8rem; }
 .task-card p, .task-card li { color: #53615b; line-height: 1.65; }
+.task-card-wide { grid-column: 1 / -1; }
+.slides-carousel { margin-top: 1.5rem; outline: none; }
+.slides-carousel:focus-visible { border-radius: .8rem; box-shadow: 0 0 0 3px var(--green); }
+.carousel-viewport { overflow: hidden; border-radius: .8rem; background: var(--forest); aspect-ratio: 16 / 9; }
+.carousel-slide { margin: 0; height: 100%; }
+.carousel-slide[hidden] { display: none; }
+.carousel-slide img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.carousel-slide figcaption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.carousel-controls { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1rem; margin-top: 1rem; }
+.carousel-controls button { min-height: 44px; padding: .65rem 1rem; border: 1px solid var(--ink); border-radius: 99px; background: transparent; color: var(--ink); font: 700 .78rem "Manrope",sans-serif; cursor: pointer; }
+.carousel-controls button:last-child { justify-self: end; }
+.carousel-controls button:hover, .carousel-controls button:focus-visible { background: var(--forest); color: var(--white); }
+.carousel-status { margin: 0; color: var(--green) !important; font: 500 .74rem "DM Mono",monospace; white-space: nowrap; }
+.carousel-dots { display: flex; flex-wrap: wrap; justify-content: center; gap: .45rem; margin-top: 1rem; }
+.carousel-dots button { width: .65rem; height: .65rem; padding: 0; border: 0; border-radius: 50%; background: #aebdb6; cursor: pointer; }
+.carousel-dots button[aria-current="true"] { background: var(--green); box-shadow: 0 0 0 .2rem rgba(30,107,79,.18); }
 .completed-task { border-color: var(--green); background: var(--white); }
 .task-group { font-size: .88rem; }
 .deadline-card { background: var(--lime); }
