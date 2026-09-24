@@ -18,7 +18,7 @@
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
     <header class="detail-header">
       <a class="brand" href="index.html"><img class="brand-logo" src="assets/logo-circulo.png" alt="" /><span>Portfólio DSM</span></a>
-      <nav class="detail-nav" aria-label="Navegação da disciplina"><a href="#conteudos">Conteúdo</a><a href="#atividades">Atividades</a><a href="#avaliacao-1">Avaliação 1</a><a href="#comentario">Comentário</a></nav>
+      <nav class="detail-nav" aria-label="Navegação da disciplina"><a href="#conteudos">Conteúdo</a><a href="#atividades">Atividades</a><a href="#microservicos">Microserviços</a><a href="#avaliacao-1">Avaliação 1</a><a href="#comentario">Comentário</a></nav>
       <a class="back-link" href="index.html#disciplinas">← Voltar às disciplinas</a>
     </header>
 
@@ -49,7 +49,14 @@
       <section id="atividades" class="section activities-section">
         <div class="section-heading reveal"><p class="eyebrow">Atividades</p><h2>Prática e avaliação</h2><p>Entregas já feitas e próximas atividades da disciplina.</p></div>
         <div class="tasks-grid">
-          <article class="task-card completed-task reveal"><span class="task-type">Trabalho · Entregue em 08/09/2026</span><h3>Microserviços</h3><p>Atividade sobre arquitetura de microserviços, registrada como entregue na data prevista.</p></article>
+          <article id="microservicos" class="task-card completed-task reveal">
+            <span class="task-type">Trabalho · Entregue em 08/09/2026</span>
+            <h3>Loja virtual: Monolito, SOA e Microsserviços</h3>
+            <p>Programa demonstrativo que implementa o mesmo fluxo de pedidos em três arquiteturas. As versões em Java usam Spring Boot e a solução de microsserviços inclui um serviço de pagamento em Python, mostrando que os componentes podem usar tecnologias diferentes e se comunicar por HTTP e JSON.</p>
+            <p><strong>Para executar:</strong> é preciso ter Java 17, Maven e Python 3. Depois de extrair o arquivo, basta abrir <code>INICIAR_PROJETO.bat</code>, escolher uma arquitetura e aguardar a inicialização. A coleção do Postman traz requisições prontas para os testes.</p>
+            <p><strong>Pacote revisado:</strong> a versão disponível contém apenas o código-fonte, o iniciador, a coleção do Postman e um guia completo. Não foram encontrados senhas, tokens, chaves, dados pessoais reais ou conexões externas.</p>
+            <a class="download-link" href="assets/atividades/web-iii/loja-arquiteturas-monolito-soa-microsservicos.zip" download>Baixar projeto e instruções em ZIP ↓</a>
+          </article>
           <article id="avaliacao-1" class="task-card deadline-card reveal">
             <span class="task-type">Avaliação 1 · Trabalho em grupo</span>
             <h3>Testes no ecossistema Spring Boot</h3>
