@@ -18,7 +18,7 @@
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
     <header class="detail-header">
       <a class="brand" href="index.html"><img class="brand-logo" src="assets/logo-circulo.png" alt="" /><span>Portfólio DSM</span></a>
-      <nav class="detail-nav" aria-label="Navegação da disciplina"><a href="#conteudos">Conteúdo</a><a href="#atividades">Atividades</a><a href="#microservicos">Microserviços</a><a href="#avaliacao-1">Avaliação 1</a><a href="#comentario">Comentário</a></nav>
+      <nav class="detail-nav" aria-label="Navegação da disciplina"><a href="#conteudos">Conteúdo</a><a href="#atividades">Atividades</a><a href="#microservicos">Microserviços</a><a href="#testes-integracao">Testes de Integração</a><a href="#comentario">Comentário</a></nav>
       <a class="back-link" href="index.html#disciplinas">← Voltar às disciplinas</a>
     </header>
 
@@ -56,25 +56,70 @@
             <p><strong>Para executar:</strong> é preciso ter Java 17, Maven e Python 3. Depois de extrair o arquivo, basta abrir <code>INICIAR_PROJETO.bat</code>, escolher uma arquitetura e aguardar a inicialização. A coleção do Postman traz requisições prontas para os testes.</p>
             <p><strong>Pacote revisado:</strong> a versão disponível contém apenas o código-fonte, o iniciador, a coleção do Postman e um guia completo. Não foram encontrados senhas, tokens, chaves, dados pessoais reais ou conexões externas.</p>
             <a class="download-link" href="assets/atividades/web-iii/loja-arquiteturas-monolito-soa-microsservicos.zip" download>Baixar projeto e instruções em ZIP ↓</a>
+            <a class="download-link" href="assets/atividades/web-iii/apresentacao/FATEC_Arquiteturas_Monolitico_SOA_Microsservicos.pptx" download>Baixar apresentação PPTX ↓</a>
+            <a class="download-link" href="assets/atividades/web-iii/apresentacao/infografico_arquiteturas_loja_virtual.pdf" download>Baixar infográfico PDF ↓</a>
           </article>
-          <article id="avaliacao-1" class="task-card deadline-card reveal">
-            <span class="task-type">Avaliação 1 · Trabalho em grupo</span>
-            <h3>Testes no ecossistema Spring Boot</h3>
-            <p>Preparar uma apresentação sobre <strong>Teste Unitário</strong>, <strong>Teste de Integração</strong> ou <strong>TDD</strong>. O conteúdo precisa trazer a parte teórica, uma prática em Spring Boot e uma avaliação quantitativa do exemplo apresentado.</p>
+          <article id="avaliacao-1" class="task-card completed-task reveal">
+            <span class="task-type">Avaliação 1 · Concluída em 28/09/2026</span>
+            <h3>Testes de Integração em Spring Boot</h3>
+            <p>O grupo trabalhou o tema Teste de Integração, com explicação teórica, exemplo prático em Spring Boot e avaliação quantitativa do resultado dos testes automatizados.</p>
             <ul>
-              <li>Todos os integrantes apresentam e precisam entender o trabalho completo.</li>
-              <li>Perguntas adicionais podem compor a nota.</li>
-              <li>Nota final: 50% professor e 50% média das avaliações dos outros grupos.</li>
-              <li>Se o grupo precisar de material impresso, deve enviá-lo até 25/09.</li>
+              <li>Apresentação editável em PPTX preparada para a exposição do grupo.</li>
+              <li>Programa prático com API REST de produtos, JPA e banco H2 em memória.</li>
+              <li>Testes com JUnit 5, MockMvc e contexto real do Spring Boot.</li>
+              <li>Resultado validado: 4 testes executados, 4 aprovados e 0 falhas.</li>
             </ul>
-            <span class="deadline">Prazo: 28/09/2026 às 23h59</span>
+            <span class="deadline">Status: concluído</span>
           </article>
+        </div>
+      </section>
+
+      <section id="testes-integracao" class="section integration-section">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Trabalho completo</p>
+          <h2>Testes de Integração</h2>
+          <p>Conteúdo teórico, prática desenvolvida e avaliação quantitativa no ecossistema Spring Boot.</p>
+        </div>
+
+        <div class="integration-layout">
+          <article class="integration-panel reveal">
+            <span class="task-type">Base teórica</span>
+            <h3>O que o teste valida</h3>
+            <p>Teste de integração verifica se diferentes partes reais do sistema funcionam juntas. Em uma aplicação Spring Boot, isso pode envolver controller, service, repository, serialização JSON, configuração do contexto e banco de dados de teste.</p>
+            <p>Diferente do teste unitário, que observa uma unidade pequena de código de forma isolada, o teste de integração avalia o fluxo entre camadas e ajuda a encontrar problemas de configuração, persistência e comunicação interna.</p>
+          </article>
+
+          <article class="integration-panel reveal">
+            <span class="task-type">Programa prático</span>
+            <h3>API de Produtos</h3>
+            <p>O programa desenvolvido implementa uma API REST simples para cadastro e consulta de produtos de uma loja virtual. O teste principal envia uma requisição para <code>POST /produtos</code>, passa pelas camadas da aplicação e confirma a gravação no banco H2.</p>
+            <div class="flow-list" aria-label="Fluxo do teste de integração">
+              <span>MockMvc</span>
+              <span>ProdutoController</span>
+              <span>ProdutoService</span>
+              <span>ProdutoRepository</span>
+              <span>H2 Database</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="metric-grid reveal" aria-label="Avaliação quantitativa dos testes">
+          <article><span>Testes executados</span><strong>4</strong></article>
+          <article><span>Aprovados</span><strong>4</strong></article>
+          <article><span>Falhas</span><strong>0</strong></article>
+          <article><span>Sucesso</span><strong>100%</strong></article>
+        </div>
+
+        <div class="integration-downloads reveal">
+          <a class="download-link" href="assets/atividades/web-ii/apresentacao/testes-integracao-springboot.pptx" download>Baixar apresentação PPTX ↓</a>
+          <a class="download-link" href="assets/atividades/web-ii/testes-integracao-springboot.zip" download>Baixar programa prático ZIP ↓</a>
+          <a class="download-link" href="assets/atividades/web-ii/testes-integracao-springboot/README.md" download>Baixar roteiro do programa ↓</a>
         </div>
       </section>
 
       <section id="comentario" class="section about-section">
         <div class="about-label reveal"><span>Comentário pessoal</span></div>
-        <div class="about-copy reveal"><h2>Testar dá segurança para mudar.</h2><p>O que mais ficou claro para mim é que teste não serve só para provar que algo funciona. Ele ajuda a entender melhor a regra, encontrar erros antes da entrega e alterar o código com menos medo de quebrar o que já estava pronto.</p></div>
+        <div class="about-copy reveal"><h2>Testar dá segurança para mudar.</h2><p>O que mais ficou claro para mim é que teste não serve só para provar que algo funciona. Ele ajuda a entender melhor a regra, encontrar erros antes da entrega e alterar o código com menos medo de quebrar o que já estava pronto.</p><p>No trabalho de integração, a prática mostrou que a confiança aumenta quando o teste percorre o caminho completo da API, desde a requisição HTTP até a persistência no banco de teste.</p></div>
       </section>
     </main>
     <footer><p>Portfólio acadêmico · Desenvolvimento Web III</p><p>2026 · Daniel Doneda</p></footer>

@@ -187,6 +187,18 @@ footer p { margin: 0; }
 .deadline { display: inline-block; margin-top: 1rem; padding: .5rem .8rem; border-radius: 99px; background: var(--forest); color: var(--white); font: 500 .74rem "DM Mono",monospace; }
 .download-link { display: inline-block; margin-top: .8rem; padding: .7rem 1rem; border-radius: 99px; background: var(--forest); color: var(--white); text-decoration: none; font: 500 .74rem "DM Mono",monospace; }
 .download-link:hover, .download-link:focus-visible { background: var(--green); }
+.integration-section { background: var(--white); }
+.integration-layout { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; }
+.integration-panel { padding: clamp(1.4rem,3vw,2rem); border: 1px solid var(--line); border-radius: 1rem; background: var(--paper); }
+.integration-panel h3 { margin: 1.4rem 0 .8rem; font-size: clamp(1.5rem,3vw,2rem); letter-spacing: -.03em; }
+.integration-panel p { color: #53615b; line-height: 1.75; }
+.flow-list { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.4rem; }
+.flow-list span { padding: .45rem .7rem; border: 1px solid var(--line); border-radius: 99px; background: var(--white); color: var(--green); font: 500 .72rem "DM Mono",monospace; }
+.metric-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; margin-top: 1rem; }
+.metric-grid article { min-height: 150px; padding: 1.4rem; border: 1px solid var(--ink); border-radius: 1rem; background: var(--forest); color: var(--white); }
+.metric-grid span { color: var(--mint); font: 500 .72rem "DM Mono",monospace; text-transform: uppercase; }
+.metric-grid strong { display: block; margin-top: 2rem; color: var(--lime); font-size: 2.7rem; line-height: 1; }
+.integration-downloads { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.4rem; }
 .activity-document-section { background: var(--white); }
 .portfolio-activity { max-width: 980px; margin-left: auto; }
 .activity-text p, .prompt-record > p:last-child, .activity-personal-comment > p:last-child { max-width: 850px; line-height: 1.85; }
@@ -234,6 +246,7 @@ footer p { margin: 0; }
   .status-card, .profile-card { max-width: 480px; transform: none; }
   .pi-grid { grid-template-columns: 1fr 1fr; }
   .topics-grid { grid-template-columns: repeat(2,1fr); }
+  .metric-grid { grid-template-columns: repeat(2,1fr); }
   .previous-semesters-grid { grid-template-columns: repeat(2,1fr); }
   .contact-grid { grid-template-columns: repeat(2,1fr); }
 }
@@ -252,7 +265,8 @@ footer p { margin: 0; }
   .disciplines-grid { grid-template-columns: 1fr; }
   .activity-meta { padding: 1.3rem 0 0; border-left: 0; border-top: 1px solid var(--line); }
   .pi-grid { grid-template-columns: 1fr; }
-  .topics-grid, .tasks-grid { grid-template-columns: 1fr; }
+  .topics-grid, .tasks-grid, .integration-layout { grid-template-columns: 1fr; }
+  .metric-grid { grid-template-columns: 1fr; }
   .previous-semesters-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
   .contact-card { min-height: 230px; }
