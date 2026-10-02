@@ -163,8 +163,8 @@ footer p { margin: 0; }
 .task-card .task-type { color: var(--green); font: 500 .7rem "DM Mono",monospace; text-transform: uppercase; }
 .task-card h3 { margin: 1.5rem 0 .8rem; }
 .task-card p, .task-card li { color: #53615b; line-height: 1.65; }
-.expandable-tasks .task-card.is-enhanced { min-height: 24rem; display: flex; flex-direction: column; align-items: stretch; }
-.expandable-tasks .task-card-content { position: relative; max-height: 15.5rem; overflow: hidden; transition: max-height .35s ease; }
+.expandable-tasks .task-card.is-enhanced { min-height: 17rem; display: flex; flex-direction: column; align-items: stretch; gap: 1.1rem; }
+.expandable-tasks .task-card-content { position: relative; max-height: 10.5rem; overflow: hidden; transition: max-height .35s ease; }
 .expandable-tasks .task-card.is-collapsible:not(.is-expanded) .task-card-content::after { content: ""; position: absolute; right: 0; bottom: 0; left: 0; height: 5rem; background: linear-gradient(180deg, rgba(247,244,236,0), var(--paper) 88%); pointer-events: none; }
 .expandable-tasks .deadline-card.is-collapsible:not(.is-expanded) .task-card-content::after { background: linear-gradient(180deg, rgba(220,239,163,0), var(--lime) 88%); }
 .task-card-toggle { align-self: flex-start; margin-top: auto; padding: .7rem 1rem; border: 1px solid var(--forest); border-radius: 99px; background: transparent; color: var(--forest); font: 600 .74rem "DM Mono",monospace; cursor: pointer; }
