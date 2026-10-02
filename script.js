@@ -79,3 +79,68 @@ document.querySelectorAll('[data-carousel]').forEach((carousel) => {
 
   showSlide(0);
 });
+
+document.querySelectorAll('.expandable-tasks .task-card').forEach((card, index) => {
+  const content = document.createElement('div');
+  content.className = 'task-card-content';
+  content.id = `task-card-content-${index + 1}`;
+
+  while (card.firstChild) {
+    content.appendChild(card.firstChild);
+  }
+
+  const toggle = document.createElement('button');
+  toggle.type = 'button';
+  toggle.className = 'task-card-toggle';
+  toggle.textContent = 'Expandir';
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.setAttribute('aria-controls', content.id);
+  toggle.hidden = true;
+
+  card.append(content, toggle);
+  card.classList.add('is-enhanced');
+
+  const interactiveElements = [...content.querySelectorAll('a, button, input, select, textarea, [tabindex]')];
+
+  const updateInteractiveElements = (expanded) => {
+    interactiveElements.forEach((element) => {
+      if (expanded) {
+        if (element.dataset.previousTabindex === '') {
+          element.removeAttribute('tabindex');
+        } else if (element.dataset.previousTabindex !== undefined) {
+          element.setAttribute('tabindex', element.dataset.previousTabindex);
+        }
+        delete element.dataset.previousTabindex;
+      } else {
+        if (element.dataset.previousTabindex === undefined) {
+          element.dataset.previousTabindex = element.getAttribute('tabindex') ?? '';
+        }
+        element.setAttribute('tabindex', '-1');
+      }
+    });
+  };
+
+  const checkOverflow = () => {
+    if (card.classList.contains('is-expanded')) {
+      content.style.maxHeight = `${content.scrollHeight}px`;
+      return;
+    }
+
+    content.style.removeProperty('max-height');
+    const isCollapsible = content.scrollHeight > content.clientHeight + 2;
+    card.classList.toggle('is-collapsible', isCollapsible);
+    toggle.hidden = !isCollapsible;
+    updateInteractiveElements(!isCollapsible);
+  };
+
+  toggle.addEventListener('click', () => {
+    const expanded = card.classList.toggle('is-expanded');
+    toggle.textContent = expanded ? 'Recolher' : 'Expandir';
+    toggle.setAttribute('aria-expanded', String(expanded));
+    content.style.maxHeight = expanded ? `${content.scrollHeight}px` : '';
+    updateInteractiveElements(expanded);
+  });
+
+  checkOverflow();
+  window.addEventListener('resize', checkOverflow);
+});
