@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="ImobFiscal, Projeto Integrador do terceiro semestre de Desenvolvimento de Software Multiplataforma da FATEC." />
     <meta property="og:title" content="ImobFiscal | Projeto Integrador" />
-    <meta property="og:description" content="Apresentação do grupo, do problema e da proposta do Projeto Integrador ImobFiscal." />
+    <meta property="og:description" content="Processo, decisões, evidências e limitações do MVP web ImobFiscal." />
     <meta name="theme-color" content="#11261f" />
     <title>ImobFiscal | Projeto Integrador</title>
     <link rel="icon" type="image/png" href="assets/logo-circulo.png" />
@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=3" />
+    <link rel="stylesheet" href="styles.css?v=4" />
     <script src="script.js?v=2" defer></script>
   </head>
   <body>
@@ -22,12 +22,7 @@
     <header class="detail-header">
       <a class="brand" href="index.html"><img class="brand-logo" src="assets/logo-circulo.png" alt="" /><span>Portfólio DSM</span></a>
       <nav class="detail-nav" aria-label="Navegação do Projeto Integrador">
-        <a href="#projeto">Projeto</a>
-        <a href="#grupo">Grupo</a>
-        <a href="#solucao">Solução</a>
-        <a href="#disciplinas">Disciplinas</a>
-        <a href="#etapas">Etapas</a>
-        <a href="#entregas">Entregas</a>
+        <a href="#projeto">Projeto</a><a href="#evolucao">Evolução</a><a href="#mvp">MVP</a><a href="#ihc">IHC</a><a href="#arquitetura">Arquitetura</a><a href="#processo">Processo</a><a href="#equipe">Equipe</a>
       </nav>
       <a class="back-link" href="index.html#pi">← Voltar ao portfólio</a>
     </header>
@@ -37,132 +32,102 @@
         <div class="pi-project-title reveal">
           <p class="eyebrow">Projeto Integrador · 3º semestre · 2026</p>
           <h1>Imob<span>Fiscal.</span></h1>
-          <p class="pi-project-lead">Uma proposta de sistema para organizar contratos de locação, apoiar cálculos tributários e tornar informações fiscais mais claras para locadores e imobiliárias.</p>
-          <div class="hero-actions">
-            <a class="button primary" href="#projeto">Conhecer o projeto</a>
-            <a class="button secondary" href="#grupo">Ver o grupo</a>
+          <p class="pi-project-lead">MVP web para centralizar a gestão de imóveis, contratos e cobranças, com uma simulação didática de IBS e CBS para proprietários e pequenas imobiliárias.</p>
+          <div class="hero-actions pi-external-actions">
+            <a class="button primary" href="https://pi-imob-fiscal.vercel.app/" target="_blank" rel="noopener noreferrer">Abrir aplicação ↗</a>
+            <a class="button secondary" href="https://github.com/dumont-curvaderio/PI-ImobFiscal" target="_blank" rel="noopener noreferrer">Ver código ↗</a>
           </div>
         </div>
         <aside class="pi-project-status reveal" aria-label="Situação atual do projeto">
           <div class="status-top"><span>Visão geral</span><span class="pulse" aria-hidden="true"></span></div>
-          <strong>PI</strong>
-          <p>Estrutura inicial da apresentação. Os dados oficiais do grupo e os artefatos finais serão incluídos nas próximas atualizações.</p>
-          <dl>
-            <div><dt>Curso</dt><dd>DSM · FATEC</dd></div>
-            <div><dt>Projeto</dt><dd>ImobFiscal</dd></div>
-            <div><dt>Momento</dt><dd>Em desenvolvimento</dd></div>
-          </dl>
+          <strong>MVP</strong>
+          <p>Produto funcional e avaliável, construído de forma incremental. Parte dos requisitos permanece em desenvolvimento ou no roadmap.</p>
+          <dl><div><dt>Curso</dt><dd>DSM · FATEC</dd></div><div><dt>Área</dt><dd>Gestão de locações</dd></div><div><dt>Status</dt><dd>Em desenvolvimento</dd></div></dl>
         </aside>
       </section>
 
       <section id="projeto" class="section pi-overview-section">
         <div class="section-heading reveal">
           <p class="eyebrow">O projeto</p>
-          <h2>Complexidade fiscal traduzida em um fluxo mais claro.</h2>
-          <p>O ImobFiscal nasce da necessidade de acompanhar mudanças tributárias que afetam o mercado de locação. A proposta é reunir contratos, cálculos e informações em um sistema que ajude o usuário a entender o que está sendo calculado e por quê.</p>
+          <h2>Um só lugar para informações que estavam espalhadas.</h2>
+          <p>Proprietários e pequenas imobiliárias ainda distribuem contratos, pagamentos, reajustes e informações fiscais entre planilhas, documentos e conversas. Essa fragmentação reduz a visibilidade das pendências e aumenta o risco de retrabalho, esquecimento e erro.</p>
         </div>
         <div class="pi-problem-grid">
-          <article class="pi-statement pi-statement-dark reveal">
-            <span>Desafio</span>
-            <h3>Regras que mudam e geram incerteza.</h3>
-            <p>IBS, CBS, Split Payment e regras de transição criam um cenário em que cálculos, processos e decisões precisam ser revistos com frequência.</p>
-          </article>
-          <article class="pi-statement reveal">
-            <span>Proposta</span>
-            <h3>Evoluir em partes, validar e adaptar.</h3>
-            <p>Em vez de tentar resolver tudo de uma vez, o projeto é organizado em incrementos: primeiro os fluxos essenciais e, depois, novas regras e integrações.</p>
-          </article>
+          <article class="pi-statement pi-statement-dark reveal"><span>Problema</span><h3>Fragmentação e pouca visibilidade.</h3><p>Dados duplicados, documentos dispersos e rotinas manuais dificultam o acompanhamento operacional e fiscal das locações.</p></article>
+          <article class="pi-statement reveal"><span>Objetivo do MVP</span><h3>Um fluxo único e rastreável.</h3><p>Permitir o cadastro de locadores e imóveis, a criação de contratos, o acompanhamento de status, a simulação de tributos e a geração de cobranças demonstrativas.</p></article>
         </div>
+        <p class="pi-academic-note reveal"><strong>Escopo acadêmico:</strong> a simulação de IBS e CBS serve para estudo e demonstração. Ela não substitui orientação contábil nem representa emissão fiscal oficial.</p>
       </section>
 
-      <section id="grupo" class="section pi-team-section">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Quem está construindo</p>
-          <h2>Apresentação do grupo.</h2>
-          <p>Esta área está pronta para receber os nomes, as fotos, os papéis e uma breve apresentação de cada integrante assim que o conteúdo oficial for enviado.</p>
-        </div>
-        <div class="pi-team-placeholder reveal">
-          <div>
-            <span class="pi-placeholder-label">Conteúdo em preparação</span>
-            <h3>Integrantes e responsabilidades</h3>
-            <p>Não inserimos nomes ou funções provisórias para evitar informações incorretas. A composição real do grupo será apresentada aqui.</p>
-          </div>
-          <ul>
-            <li><span>01</span> Nome, curso e breve apresentação</li>
-            <li><span>02</span> Papel e contribuição no projeto</li>
-            <li><span>03</span> Competências e aprendizados</li>
-          </ul>
-        </div>
-      </section>
-
-      <section id="solucao" class="section pi-solution-section">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Solução proposta</p>
-          <h2>Do contrato à informação útil.</h2>
-          <p>O fluxo abaixo representa a visão atual do produto. Ele será refinado conforme as regras, os protótipos e os requisitos do PI forem consolidados.</p>
-        </div>
-        <div class="pi-flow reveal" aria-label="Fluxo proposto do ImobFiscal">
-          <article><span>01</span><h3>Contratos</h3><p>Cadastro e organização das informações da locação.</p></article>
-          <div class="pi-flow-arrow" aria-hidden="true">→</div>
-          <article><span>02</span><h3>Regras fiscais</h3><p>Aplicação das regras vigentes ao contexto informado.</p></article>
-          <div class="pi-flow-arrow" aria-hidden="true">→</div>
-          <article><span>03</span><h3>Cálculo</h3><p>Simulação dos valores com explicação do resultado.</p></article>
-          <div class="pi-flow-arrow" aria-hidden="true">→</div>
-          <article><span>04</span><h3>Acompanhamento</h3><p>Relatórios e informações para apoiar decisões.</p></article>
-        </div>
-        <div class="pi-audience-grid">
-          <article class="reveal"><p class="eyebrow">Público inicial</p><h3>Locadores</h3><p>Pessoas que precisam acompanhar contratos e compreender os impactos tributários sobre a locação.</p></article>
-          <article class="reveal"><p class="eyebrow">Público inicial</p><h3>Imobiliárias</h3><p>Empresas que administram locações e precisam organizar informações de diferentes contratos e clientes.</p></article>
-        </div>
-      </section>
-
-      <section id="disciplinas" class="section pi-disciplines-section">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Integração do semestre</p>
-          <h2>Um projeto, várias disciplinas.</h2>
-          <p>Cada matéria contribui com uma parte da solução. A página será atualizada com as evidências produzidas em cada etapa.</p>
-        </div>
-        <div class="pi-discipline-map">
-          <article class="reveal"><span>Gestão Ágil</span><h3>Organização</h3><p>Visão do produto, backlog, priorização, sprints e acompanhamento das entregas.</p></article>
-          <article class="reveal"><span>IHC</span><h3>Experiência</h3><p>Pesquisa, persona, jornada, fluxos e validação da solução com foco no usuário.</p></article>
-          <article class="reveal"><span>Desenvolvimento Web III</span><h3>Aplicação</h3><p>Construção dos serviços, integrações e testes necessários para o funcionamento do sistema.</p></article>
-          <article class="reveal"><span>Banco de Dados</span><h3>Informação</h3><p>Modelagem e persistência dos dados de contratos, regras e resultados.</p></article>
-          <article class="reveal"><span>Técnicas de Programação II</span><h3>Estrutura</h3><p>Organização do código, orientação a objetos, padrões e boas práticas de desenvolvimento.</p></article>
-        </div>
-      </section>
-
-      <section id="etapas" class="section pi-roadmap-section">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Caminho do projeto</p>
-          <h2>Aprender, construir e revisar.</h2>
-          <p>O planejamento segue ciclos curtos para que as decisões possam ser revistas quando surgirem novos requisitos, resultados de testes ou mudanças nas regras fiscais.</p>
-        </div>
-        <ol class="pi-roadmap">
-          <li class="reveal"><span>01</span><div><h3>Planejamento ágil</h3><p>Definição do problema, visão do produto, escopo inicial e backlog.</p></div></li>
-          <li class="reveal"><span>02</span><div><h3>Design centrado no usuário</h3><p>Construção de persona, jornada, fluxos e protótipos.</p></div></li>
-          <li class="reveal"><span>03</span><div><h3>Desenvolvimento incremental</h3><p>Implementação das funcionalidades priorizadas em entregas menores.</p></div></li>
-          <li class="reveal"><span>04</span><div><h3>Testes e feedback</h3><p>Verificação do funcionamento, revisão com usuários e ajustes no backlog.</p></div></li>
-          <li class="reveal"><span>05</span><div><h3>MVP e apresentação</h3><p>Consolidação do produto, da documentação e dos resultados do grupo.</p></div></li>
+      <section id="evolucao" class="section pi-evolution-section">
+        <div class="section-heading reveal"><p class="eyebrow">Evolução do PI</p><h2>O problema ficou mais concreto a cada semestre.</h2><p>A evolução mostra como o grupo reduziu a amplitude inicial e aproximou o produto de usuários e rotinas que poderiam ser pesquisados, demonstrados e avaliados.</p></div>
+        <ol class="pi-semester-timeline">
+          <li class="reveal"><span>1º semestre</span><div><h3>Link Fiscal</h3><p>O projeto começou como uma ideia de emissão de nota e split fiscal. A falta de dados e a amplitude do tema mostraram a necessidade de um problema mais específico.</p></div></li>
+          <li class="reveal"><span>2º semestre</span><div><h3>Domínio imobiliário</h3><p>O grupo migrou para a gestão de imóveis e passou a estruturar entidades e fluxos de locação, aproximando o projeto de rotinas observáveis.</p></div></li>
+          <li class="reveal"><span>3º semestre</span><div><h3>ImobFiscal</h3><p>A proposta foi consolidada como um SaaS de apoio a proprietários e imobiliárias, com gestão de locadores, imóveis, contratos, cobranças e simulação fiscal.</p></div></li>
         </ol>
       </section>
 
-      <section id="entregas" class="section pi-deliverables-section">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Evidências do PI</p>
-          <h2>Materiais e entregas.</h2>
-          <p>Os arquivos e links serão ativados nesta seção conforme o grupo concluir e aprovar cada versão.</p>
+      <section id="mvp" class="section pi-mvp-section">
+        <div class="section-heading reveal"><p class="eyebrow">Demonstração do MVP</p><h2>O que existe hoje e o que ainda vem depois.</h2><p>As etiquetas abaixo separam a versão demonstrável dos recursos que ainda estão sendo construídos ou permanecem planejados.</p></div>
+        <div class="pi-status-columns">
+          <article class="pi-status-card implemented reveal"><span class="pi-status implemented">Implementado</span><h3>Versão demonstrável</h3><ul><li>Cadastro e login básico.</li><li>Gestão de locadores e imóveis.</li><li>Criação e acompanhamento de contratos.</li><li>Simulação didática de IBS e CBS.</li><li>Geração e consulta de cobranças simuladas.</li><li>Painel e navegação protegida no frontend.</li></ul></article>
+          <article class="pi-status-card developing reveal"><span class="pi-status developing">Em desenvolvimento</span><h3>Fortalecimento do MVP</h3><ul><li>Autenticação validada pelo servidor.</li><li>Isolamento completo por imobiliária.</li><li>Trilha de auditoria em banco não relacional.</li><li>Ampliação dos testes automatizados.</li><li>Validação formal de usabilidade.</li><li>Estudo experimental com Next.js e NestJS.</li></ul></article>
+          <article class="pi-status-card planned reveal"><span class="pi-status planned">Planejado</span><h3>Roadmap</h3><ul><li>Notificações por e-mail e WhatsApp.</li><li>Exportação contábil e assinatura eletrônica.</li><li>Integração bancária.</li><li>Emissão fiscal oficial.</li><li>Split payment real.</li><li>Aplicativo móvel.</li></ul></article>
         </div>
-        <div class="pi-deliverables-grid">
-          <article class="reveal"><span class="pi-deliverable-status active">Em desenvolvimento</span><h3>Planejamento e DCU</h3><p>Primeira versão com Planejamento Ágil e Design Centrado no Usuário.</p><small>Arquivo será adicionado posteriormente.</small></article>
-          <article class="reveal"><span class="pi-deliverable-status">Aguardando conteúdo</span><h3>Protótipo</h3><p>Fluxos e telas que representarão a experiência proposta para o ImobFiscal.</p><small>Link será adicionado posteriormente.</small></article>
-          <article class="reveal"><span class="pi-deliverable-status">Aguardando conteúdo</span><h3>Repositório</h3><p>Código, documentação técnica e histórico de desenvolvimento do projeto.</p><small>Link será adicionado posteriormente.</small></article>
-          <article class="reveal"><span class="pi-deliverable-status">Aguardando conteúdo</span><h3>Apresentação final</h3><p>Síntese do problema, da solução, do processo e dos resultados alcançados.</p><small>Arquivo será adicionado posteriormente.</small></article>
+      </section>
+
+      <section id="ihc" class="section pi-ihc-section">
+        <div class="section-heading reveal"><p class="eyebrow">Interação Humano-Computador</p><h2>Projetar para quem administra locações de verdade.</h2><p>A persona e a jornada ajudam a transformar um domínio complexo em decisões de interface mais claras, guiadas e verificáveis.</p></div>
+        <div class="pi-persona-layout">
+          <article class="pi-persona-card reveal"><span class="pi-persona-initials" aria-hidden="true">CM</span><div><p class="eyebrow">Persona principal</p><h3>Carlos Mendes</h3><p><strong>46 anos · empresário autônomo e proprietário de imóveis</strong></p><p>Tem domínio digital intermediário e administra diversas locações com planilhas, arquivos e WhatsApp. Recorre ao contador quando surgem dúvidas fiscais.</p><blockquote>“Eu preciso controlar meus aluguéis sem depender de várias planilhas e sem correr o risco de errar na parte fiscal.”</blockquote></div></article>
+          <div class="pi-persona-details"><article class="reveal"><h3>Objetivos</h3><p>Centralizar informações, acompanhar pagamentos, evitar esquecimentos, entender valores fiscais e compartilhar dados organizados com a contabilidade.</p></article><article class="reveal"><h3>Frustrações</h3><p>Documentos espalhados, informações duplicadas, pouca visão de pendências, retrabalho e linguagem tributária complexa.</p></article><article class="reveal"><h3>Necessidades</h3><p>Painel claro, formulários guiados, validação imediata, confirmação de ações críticas, histórico e explicação do cálculo.</p></article></div>
         </div>
-        <div class="pi-update-note reveal">
-          <p class="eyebrow">Próxima atualização</p>
-          <h3>Conteúdo real do grupo e do trabalho.</h3>
-          <p>Quando os nomes, textos, imagens e arquivos forem enviados, esta estrutura será substituída pelas informações definitivas sem precisar reorganizar a página.</p>
+
+        <div class="pi-journey-heading reveal"><p class="eyebrow">Jornada resumida</p><h3>Da entrada no sistema ao acompanhamento.</h3></div>
+        <div class="pi-journey-wrap reveal">
+          <table class="pi-journey-table">
+            <thead><tr><th>Etapa</th><th>Ação</th><th>Principal fricção</th><th>Resposta de design</th></tr></thead>
+            <tbody><tr><th>Acesso</th><td>Entra no sistema</td><td>Não saber por onde começar</td><td>Painel orientado a tarefas</td></tr><tr><th>Locador</th><td>Registra dados e regime</td><td>Termos fiscais</td><td>Ajuda contextual e validação</td></tr><tr><th>Imóvel</th><td>Associa imóvel ao locador</td><td>Vínculo incorreto</td><td>Resumo da associação</td></tr><tr class="journey-tension"><th>Contrato</th><td>Informa datas e valor</td><td>Alto risco de erro</td><td>Etapas curtas e revisão</td></tr><tr><th>Simulação</th><td>Consulta IBS e CBS</td><td>Não entender o cálculo</td><td>Memória de cálculo e aviso didático</td></tr><tr class="journey-relief"><th>Cobrança</th><td>Gera o registro</td><td>Medo de duplicidade</td><td>Confirmação, status e valores detalhados</td></tr><tr><th>Acompanhamento</th><td>Consulta pendências</td><td>Baixa visibilidade</td><td>Filtros, prioridades e histórico</td></tr></tbody>
+          </table>
         </div>
+        <div class="pi-journey-legend reveal"><span><i class="tension-dot"></i>Maior tensão: contrato</span><span><i class="relief-dot"></i>Maior alívio: confirmação da cobrança</span></div>
+      </section>
+
+      <section id="arquitetura" class="section pi-architecture-section">
+        <div class="section-heading reveal"><p class="eyebrow">Arquitetura técnica</p><h2>A versão demonstrável.</h2><p>A arquitetura abaixo representa a implementação atual. A estrutura parcial em Next.js, NestJS, Prisma e Supabase é um estudo de evolução e não deve ser confundida com a versão funcional.</p></div>
+        <div class="pi-architecture-layout">
+          <div class="pi-architecture-diagram reveal" aria-label="Arquitetura atual do ImobFiscal"><div><span>Frontend</span><strong>React 18 + Vite</strong><small>React Router · Axios</small></div><b aria-hidden="true">↓</b><div><span>Comunicação</span><strong>API REST</strong><small>Requisições e respostas JSON</small></div><b aria-hidden="true">↓</b><div><span>Backend</span><strong>Java 17 + Spring Boot 3.3</strong><small>Controller → Service → Repository</small></div><b aria-hidden="true">↓</b><div><span>Persistência</span><strong>MySQL</strong><small>Spring Data JPA</small></div></div>
+          <aside class="pi-stack-card reveal"><p class="eyebrow">Stack demonstrável</p><ul><li><strong>Frontend:</strong> React 18, Vite, React Router e Axios.</li><li><strong>Backend:</strong> Java 17, Spring Boot 3.3 e API REST.</li><li><strong>Persistência:</strong> Spring Data JPA e MySQL.</li><li><strong>Senhas:</strong> BCrypt.</li><li><strong>Testes:</strong> JUnit 5 e Mockito.</li><li><strong>Deploy:</strong> frontend publicado na Vercel.</li></ul></aside>
+        </div>
+        <div class="pi-technical-flow reveal"><p class="eyebrow">Fluxo técnico em destaque</p><h3>Geração de cobrança simulada</h3><ol><li>O usuário seleciona um contrato e informa o vencimento.</li><li>A API busca contrato, imóvel e locador.</li><li>Regime tributário, tipo do imóvel e ano determinam a alíquota.</li><li>O motor calcula IBS, CBS e valor líquido.</li><li>A cobrança armazena a memória do cálculo.</li><li>O frontend apresenta o resultado e o status.</li></ol></div>
+        <div class="pi-nosql-note reveal"><span class="pi-status planned">Planejado</span><div><h3>Banco de dados não relacional</h3><p>A implementação atual usa MySQL, que é relacional. Supabase/PostgreSQL também é relacional. Para atender à disciplina, o roadmap propõe MongoDB para eventos de auditoria, histórico de alterações e notificações, preservando o banco relacional para os dados transacionais.</p></div></div>
+      </section>
+
+      <section id="disciplinas" class="section pi-disciplines-section">
+        <div class="section-heading reveal"><p class="eyebrow">Integração do semestre</p><h2>O projeto conecta decisões de várias disciplinas.</h2><p>Gestão, pesquisa, interface, desenvolvimento e dados se encontram no mesmo fluxo de trabalho.</p></div>
+        <div class="pi-discipline-map"><article class="reveal"><span>Gestão Ágil</span><h3>Organização</h3><p>Escopo, backlog, priorização, ciclos de entrega e evidências no Trello.</p></article><article class="reveal"><span>IHC</span><h3>Experiência</h3><p>Persona, jornada, redução de carga cognitiva, prevenção de erros e validação de usabilidade.</p></article><article class="reveal"><span>Desenvolvimento Web III</span><h3>Aplicação</h3><p>Frontend, API REST, integrações, autenticação e testes automatizados.</p></article><article class="reveal"><span>Banco de Dados Não Relacional</span><h3>Auditoria</h3><p>Estudo de uma trilha de eventos e histórico em MongoDB, ainda não implementada.</p></article><article class="reveal"><span>Projeto Integrador</span><h3>Consolidação</h3><p>Documentação, avaliação do MVP e comunicação dos resultados do grupo.</p></article></div>
+      </section>
+
+      <section id="processo" class="section pi-roadmap-section">
+        <div class="section-heading reveal"><p class="eyebrow">Gestão ágil</p><h2>Cinco ciclos para orientar o backlog.</h2><p>O planejamento distribui o trabalho em entregas menores e permite revisar decisões a partir de testes, evidências e feedback.</p></div>
+        <ol class="pi-roadmap"><li class="reveal"><span>01</span><div><h3>Escopo e experiência</h3><p>Consolidação do problema, persona, jornada e documentação.</p></div></li><li class="reveal"><span>02</span><div><h3>Segurança e qualidade</h3><p>Autenticação, validações e ampliação dos testes.</p></div></li><li class="reveal"><span>03</span><div><h3>Auditoria NoSQL</h3><p>Planejamento da trilha de eventos e do histórico de alterações.</p></div></li><li class="reveal"><span>04</span><div><h3>Usabilidade e iterações</h3><p>Testes com usuários, análise dos resultados e ajustes de interface.</p></div></li><li class="reveal"><span>05</span><div><h3>Produto e comunicação</h3><p>Produto final, apresentação, documentação e portfólio.</p></div></li></ol>
+      </section>
+
+      <section id="resultados" class="section pi-results-section">
+        <div class="section-heading reveal"><p class="eyebrow">Evidências técnicas</p><h2>Resultados já verificados.</h2><p>Os resultados abaixo descrevem o estado observado da versão atual, sem transformar recursos planejados em entregas prontas.</p></div>
+        <div class="pi-results-grid"><article class="reveal"><span>01</span><h3>Frontend</h3><p>Compilado com sucesso para produção e publicado com telas de acesso e cadastro.</p></article><article class="reveal"><span>02</span><h3>Backend</h3><p>Compilado e testado após a correção de uma asserção.</p></article><article class="reveal"><span>03</span><h3>Testes</h3><p>Três testes unitários do motor tributário aprovados.</p></article><article class="reveal"><span>04</span><h3>Documentação</h3><p>README técnico atualizado para refletir a implementação real.</p></article></div>
+      </section>
+
+      <section id="limitacoes" class="section pi-limitations-section">
+        <div class="section-heading reveal"><p class="eyebrow">Transparência acadêmica</p><h2>O que o sistema ainda não faz.</h2><p>Registrar as limitações evita conclusões incorretas sobre o estágio do MVP e ajuda a transformar lacunas em próximos passos claros.</p></div>
+        <ul class="pi-limitations-list reveal"><li>O cálculo fiscal é uma simulação acadêmica.</li><li>Os boletos não possuem registro bancário.</li><li>Não existe emissão fiscal oficial.</li><li>O token atual não é validado pelo backend.</li><li>A imobiliária de demonstração está fixa no frontend.</li><li>A cobertura automatizada ainda é inicial.</li><li>O requisito NoSQL está planejado, não concluído.</li></ul>
+      </section>
+
+      <section id="equipe" class="section pi-team-section pi-team-final">
+        <div class="section-heading reveal"><p class="eyebrow">Equipe</p><h2>Responsabilidades no projeto.</h2><p>O trabalho reúne gestão, arquitetura, dados, liderança técnica e desenvolvimento.</p></div>
+        <div class="pi-team-grid"><article class="reveal"><span>DD</span><h3>Denise Cristina Olivo Dumont</h3><p>Gerente de Projetos</p></article><article class="reveal"><span>CD</span><h3>Christian Dumont</h3><p>Arquiteto de Sistemas</p></article><article class="reveal"><span>BG</span><h3>Bruno Garcia</h3><p>DBA</p></article><article class="reveal"><span>DD</span><h3>Daniel Doneda</h3><p>Líder Técnico</p></article><article class="reveal"><span>G</span><h3>Gabriel</h3><p>Desenvolvedor</p></article></div>
+        <div class="pi-final-links reveal"><div><p class="eyebrow">Conheça o projeto</p><h3>Acesse a versão publicada e o código.</h3></div><div class="hero-actions"><a class="button primary" href="https://pi-imob-fiscal.vercel.app/" target="_blank" rel="noopener noreferrer">Aplicação ↗</a><a class="button secondary" href="https://github.com/dumont-curvaderio/PI-ImobFiscal" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div>
       </section>
     </main>
 
