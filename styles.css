@@ -198,7 +198,7 @@ h1 span { color: var(--green); }
 .pi-ihc-section { background: var(--white); }
 .pi-persona-layout { display: grid; grid-template-columns: 1.15fr .85fr; gap: 1rem; }
 .pi-persona-card { display: grid; grid-template-columns: 145px 1fr; gap: 1.6rem; padding: clamp(1.5rem,3vw,2.3rem); border-radius: 1.2rem; background: var(--forest); color: var(--white); }
-.pi-persona-initials { width: 132px; height: 132px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.25); border-radius: 50%; background: var(--green); color: var(--lime); font-size: 2.5rem; font-weight: 800; }
+.pi-persona-image { width: 145px; height: 210px; display: block; border: 1px solid rgba(255,255,255,.25); border-radius: 1rem; object-fit: cover; object-position: center 24%; }
 .pi-persona-card .eyebrow { color: var(--lime); }
 .pi-persona-card h3 { font-size: clamp(2rem,4vw,3.7rem); letter-spacing: -.05em; }
 .pi-persona-card p { color: #c1cdc8; line-height: 1.7; }
@@ -438,7 +438,7 @@ footer p { margin: 0; }
   .pi-team-placeholder { box-shadow: 6px 6px 0 var(--forest); }
   .pi-roadmap li { grid-template-columns: 48px 1fr; gap: 1rem; }
   .pi-persona-card { grid-template-columns: 1fr; }
-  .pi-persona-initials { width: 92px; height: 92px; font-size: 1.8rem; }
+  .pi-persona-image { width: 100%; height: min(72vw,320px); object-position: center 24%; }
   .pi-technical-flow ol, .pi-results-grid, .pi-limitations-list, .pi-team-grid { grid-template-columns: 1fr; }
   .pi-nosql-note { grid-template-columns: 1fr; gap: 1rem; }
   .pi-final-links { align-items: stretch; flex-direction: column; }
