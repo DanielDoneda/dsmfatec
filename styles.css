@@ -252,6 +252,9 @@ h1 span { color: var(--green); }
 .pi-limitations-list { display: grid; grid-template-columns: repeat(2,1fr); gap: 0; margin: 0; padding: 0; border-top: 1px solid rgba(20,35,29,.3); border-left: 1px solid rgba(20,35,29,.3); list-style: none; }
 .pi-limitations-list li { min-height: 110px; padding: 1.3rem; border-right: 1px solid rgba(20,35,29,.3); border-bottom: 1px solid rgba(20,35,29,.3); font-weight: 700; line-height: 1.55; }
 .pi-team-final { background: var(--paper); }
+.pi-team-photo { overflow: hidden; margin: 0 0 2rem; border: 1px solid var(--line); border-radius: 1.2rem; background: #050608; }
+.pi-team-photo img { display: block; width: 100%; max-height: 720px; object-fit: contain; }
+.pi-team-photo figcaption { padding: .8rem 1rem; background: var(--forest); color: #b8c7c0; font: 500 .7rem "DM Mono",monospace; text-transform: uppercase; }
 .pi-team-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 1rem; }
 .pi-team-grid article { min-height: 265px; display: flex; flex-direction: column; padding: 1.4rem; border: 1px solid var(--line); border-radius: 1rem; background: var(--white); }
 .pi-team-grid article > span { width: 3.2rem; height: 3.2rem; display: grid; place-items: center; border-radius: 50%; background: var(--forest); color: var(--lime); font: 500 .75rem "DM Mono",monospace; }
