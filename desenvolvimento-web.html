@@ -11,14 +11,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=6" />
     <script src="script.js?v=2" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
     <header class="detail-header">
       <a class="brand" href="index.html"><img class="brand-logo" src="assets/logo-circulo.png" alt="" /><span>Portfólio DSM</span></a>
-      <nav class="detail-nav" aria-label="Navegação da disciplina"><a href="#conteudos">Conteúdo</a><a href="#atividades">Atividades</a><a href="#microservicos">Microserviços</a><a href="#testes-integracao">Testes de Integração</a><a href="#comentario">Comentário</a></nav>
+      <nav class="detail-nav" aria-label="Navegação da disciplina"><a href="#conteudos">Conteúdo</a><a href="#atividades">Atividades</a><a href="#seguranca-spring">Segurança</a><a href="#microservicos">Microserviços</a><a href="#testes-integracao">Testes de Integração</a><a href="#comentario">Comentário</a></nav>
       <a class="back-link" href="index.html#disciplinas">← Voltar às disciplinas</a>
     </header>
 
@@ -26,8 +26,8 @@
       <section class="detail-hero">
         <div class="reveal"><p class="eyebrow">Disciplina 04 · 3º semestre · 2026</p><h1>Desenvolvimento<br /><span>Web III.</span></h1></div>
         <aside class="detail-summary reveal">
-          <p>A disciplina aproxima desenvolvimento e qualidade, mostrando como os testes ajudam a encontrar problemas cedo e aumentam a confiança nas mudanças do sistema.</p>
-          <dl><div><dt>Curso</dt><dd>DSM · FATEC Indaiatuba</dd></div><div><dt>Foco atual</dt><dd>Testes com Spring Boot</dd></div></dl>
+          <p>A disciplina aproxima desenvolvimento, qualidade e segurança, mostrando como testes e proteção de acesso tornam uma aplicação mais confiável.</p>
+          <dl><div><dt>Curso</dt><dd>DSM · FATEC Indaiatuba</dd></div><div><dt>Foco atual</dt><dd>Spring Boot, testes e segurança</dd></div></dl>
         </aside>
       </section>
 
@@ -71,6 +71,88 @@
             </ul>
             <span class="deadline">Status: concluído</span>
           </article>
+          <article id="atividade-seguranca" class="task-card completed-task reveal">
+            <span class="task-type">Atividade prática · Concluída</span>
+            <h3>Segurança em Spring Boot e MongoDB</h3>
+            <p>O projeto <code>mongoapp</code> foi analisado, teve seus principais riscos identificados e depois evoluiu com Spring Security, autenticação por JWT, controle de perfis e DTOs.</p>
+            <p>A prática mostrou a diferença entre uma API que apenas funciona e uma API preparada para proteger usuários, credenciais e rotas.</p>
+            <a class="download-link" href="#seguranca-spring">Ver análise e implementação →</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="seguranca-spring" class="section security-case-section">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Spring Boot + MongoDB</p>
+          <h2>Do CRUD aberto para uma API protegida.</h2>
+          <p>A atividade começou com uma análise do <code>mongoapp</code> original e terminou com a implementação de uma camada completa de autenticação e autorização.</p>
+        </div>
+
+        <div class="security-context reveal">
+          <div><span>01 · Contexto</span><h3>O sistema funcionava, mas qualquer pessoa podia entrar.</h3></div>
+          <p>O projeto inicial era uma API Spring Boot conectada ao MongoDB. Ela permitia operações CRUD com usuários, porém não confirmava quem fazia a requisição, não diferenciava usuários comuns de administradores e devolvia diretamente a entidade interna da aplicação.</p>
+        </div>
+
+        <div class="security-subheading reveal"><p class="eyebrow">Diagnóstico</p><h3>Problemas encontrados no projeto original</h3></div>
+        <div class="security-risk-grid">
+          <article class="security-risk-card reveal"><span>01</span><h4>Sem autenticação</h4><p>A API não exigia login e não conseguia identificar quem estava fazendo cada requisição.</p></article>
+          <article class="security-risk-card reveal"><span>02</span><h4>Sem autorização</h4><p>Não existia separação entre permissões de usuário comum e administrador.</p></article>
+          <article class="security-risk-card reveal"><span>03</span><h4>CRUD exposto</h4><p>As rotas de consulta, alteração e exclusão ficavam acessíveis sem uma barreira de segurança.</p></article>
+          <article class="security-risk-card reveal"><span>04</span><h4>Credenciais em risco</h4><p>Senhas e segredos poderiam ficar expostos se fossem armazenados ou configurados sem proteção.</p></article>
+          <article class="security-risk-card reveal"><span>05</span><h4>Entidade exposta</h4><p>Usar <code>Usuario</code> diretamente nas respostas poderia revelar senha, perfis e campos internos.</p></article>
+          <article class="security-risk-card reveal"><span>06</span><h4>Entrada sem controle</h4><p>Faltavam validações consistentes, bloqueio de e-mail repetido e respostas padronizadas para erros.</p></article>
+        </div>
+
+        <div class="security-subheading reveal"><p class="eyebrow">Evolução</p><h3>Melhorias implementadas</h3></div>
+        <div class="security-improvement-grid">
+          <article class="reveal"><strong>Spring Security</strong><p>Centralizou as regras de acesso e a proteção das rotas da API.</p></article>
+          <article class="reveal"><strong>BCrypt</strong><p>A senha passou a ser armazenada como hash, sem guardar o texto original.</p></article>
+          <article class="reveal"><strong>JWT stateless</strong><p>O login retorna um token que identifica o usuário sem manter sessão no servidor.</p></article>
+          <article class="reveal"><strong>Perfis USER e ADMIN</strong><p>Rotas comuns e administrativas receberam permissões diferentes.</p></article>
+          <article class="reveal"><strong>DTOs</strong><p>Cadastro, login e respostas usam objetos próprios, evitando a exposição da entidade.</p></article>
+          <article class="reveal"><strong>Validação</strong><p>Nome, e-mail e senha são verificados antes de chegar à regra de negócio.</p></article>
+          <article class="reveal"><strong>E-mail único</strong><p>O sistema impede um novo cadastro quando o endereço já está registrado.</p></article>
+          <article class="reveal"><strong>Erros globais</strong><p>Falhas de validação, acesso e negócio recebem respostas claras e padronizadas.</p></article>
+          <article class="reveal"><strong>Segredo em variável de ambiente</strong><p>A chave usada para assinar o JWT não fica gravada diretamente no código.</p></article>
+        </div>
+
+        <div class="security-tech reveal">
+          <div><p class="eyebrow">Tecnologias utilizadas</p><h3>Ferramentas que formam a proteção.</h3></div>
+          <ul><li>Java</li><li>Spring Boot</li><li>Spring Security</li><li>Spring Data MongoDB</li><li>MongoDB</li><li>JWT</li><li>BCrypt</li><li>Jakarta Validation</li><li>DTOs</li><li>REST + JSON</li></ul>
+        </div>
+
+        <div class="security-subheading reveal"><p class="eyebrow">Fluxo de autenticação</p><h3>Da senha digitada até o acesso à rota</h3></div>
+        <ol class="auth-flow">
+          <li class="reveal"><span>01</span><div><h4>Cadastro</h4><p><code>POST /api/auth/register</code> recebe nome, e-mail e senha.</p></div></li>
+          <li class="reveal"><span>02</span><div><h4>Validação</h4><p>O sistema valida os campos e verifica se o e-mail já existe.</p></div></li>
+          <li class="reveal"><span>03</span><div><h4>Senha protegida</h4><p>O BCrypt gera o hash antes de salvar o usuário no MongoDB.</p></div></li>
+          <li class="reveal"><span>04</span><div><h4>Login</h4><p><code>POST /api/auth/login</code> confere e-mail e senha.</p></div></li>
+          <li class="reveal"><span>05</span><div><h4>Token JWT</h4><p>Com os dados corretos, a API gera e devolve o token assinado.</p></div></li>
+          <li class="reveal"><span>06</span><div><h4>Rota protegida</h4><p>O cliente envia <code>Bearer + token</code>; o Spring Security valida identidade e perfil.</p></div></li>
+        </ol>
+
+        <div class="security-tests reveal">
+          <div><p class="eyebrow">Testes realizados</p><h3>Os acessos esperados foram confirmados.</h3><p>Os cenários verificaram tanto o caminho permitido quanto o bloqueio de acesso indevido.</p></div>
+          <ul>
+            <li><span>✓</span>Cadastro de usuário funcionando.</li>
+            <li><span>✓</span>Login retornando um JWT válido.</li>
+            <li><span>✓</span>Usuário <code>USER</code> acessando rotas comuns.</li>
+            <li><span>✓</span>Usuário <code>USER</code> bloqueado na rota de <code>ADMIN</code>.</li>
+            <li><span>✓</span>Usuário <code>ADMIN</code> acessando a rota administrativa.</li>
+            <li><span>✓</span>Consulta retornando somente id, nome e e-mail.</li>
+          </ul>
+        </div>
+
+        <div class="security-subheading reveal"><p class="eyebrow">Comparação</p><h3>Antes x depois</h3></div>
+        <div class="security-comparison reveal">
+          <div class="security-before"><span>Antes</span><ul><li>Rotas CRUD abertas.</li><li>Sem login ou token.</li><li>Todos com o mesmo acesso.</li><li>Senha e campos internos expostos.</li><li>Segredo sujeito a ficar no código.</li><li>Erros sem padrão.</li></ul></div>
+          <div class="security-after"><span>Depois</span><ul><li>Rotas públicas e protegidas definidas.</li><li>Login com JWT stateless.</li><li>Permissões por perfil.</li><li>Senha com BCrypt e respostas com DTOs.</li><li>Segredo JWT no ambiente.</li><li>Validação e erros padronizados.</li></ul></div>
+        </div>
+
+        <div class="security-learning reveal">
+          <p class="eyebrow">Conclusão e aprendizado</p>
+          <h3>Fazer a API funcionar foi só a primeira parte.</h3>
+          <p>Na versão original, o CRUD respondia, mas não existia controle sobre quem poderia usar cada operação. A evolução mostrou que segurança precisa fazer parte da arquitetura desde o começo. O principal aprendizado foi entender como autenticação, autorização, DTOs, validação e tratamento de erros trabalham juntos: não adianta proteger apenas o login se as rotas, os dados retornados e os segredos continuarem expostos.</p>
         </div>
       </section>
 
