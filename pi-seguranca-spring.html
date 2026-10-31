@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Implementação de segurança com Spring Security, JWT e Bean Validation no Projeto Integrador ImobFiscal." />
+    <meta property="og:title" content="Segurança no ImobFiscal | Projeto Integrador" />
+    <meta property="og:description" content="Problema, arquitetura, código, testes e aprendizados da implementação de segurança do ImobFiscal." />
+    <meta name="theme-color" content="#11261f" />
+    <title>Segurança no ImobFiscal | Projeto Integrador</title>
+    <link rel="icon" type="image/png" href="assets/logo-circulo.png" />
+    <link rel="apple-touch-icon" href="assets/logo-circulo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=7" />
+    <script src="script.js?v=2" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+    <header class="detail-header">
+      <a class="brand" href="index.html"><img class="brand-logo" src="assets/logo-circulo.png" alt="" /><span>Portfólio DSM</span></a>
+      <nav class="detail-nav" aria-label="Navegação do relatório de segurança">
+        <a href="#problema">Problema</a><a href="#fundamentacao">Conceitos</a><a href="#arquitetura-seguranca">Arquitetura</a><a href="#codigo">Código</a><a href="#testes-seguranca">Testes</a><a href="#conclusao-seguranca">Conclusão</a>
+      </nav>
+      <a class="back-link" href="projeto-integrador.html#seguranca">← Voltar ao PI</a>
+    </header>
+
+    <main id="conteudo" class="security-report-page">
+      <section class="security-report-hero">
+        <div class="reveal">
+          <p class="eyebrow">Desenvolvimento Web III · Projeto Integrador</p>
+          <h1>Segurança no<br /><span>ImobFiscal.</span></h1>
+          <p class="security-report-lead">Implementação de autenticação stateless, JWT, validação de entrada e isolamento dos dados por imobiliária.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="assets/atividades/projeto-integrador/SEGURANCA-SPRING.md" download>Baixar relatório em Markdown ↓</a>
+            <a class="button secondary" href="https://github.com/DanielDoneda/imobfiscal/commit/f364c46" target="_blank" rel="noopener noreferrer">Ver commit f364c46 ↗</a>
+          </div>
+        </div>
+        <aside class="security-report-summary reveal">
+          <p class="eyebrow">Resultado verificado</p>
+          <strong>12/12</strong>
+          <p>Testes aprovados com zero falhas, zero erros e nenhum teste ignorado.</p>
+          <dl><div><dt>Backend</dt><dd>Java 17 · Spring Boot 3.3</dd></div><div><dt>Segurança</dt><dd>Spring Security · JWT · BCrypt</dd></div><div><dt>Persistência</dt><dd>JPA · MySQL/MariaDB</dd></div></dl>
+        </aside>
+      </section>
+
+      <section class="section security-report-intro">
+        <div class="security-report-kicker reveal"><span>01</span><p>Implementação de Segurança com Spring Security</p></div>
+        <div class="security-report-prose reveal">
+          <p>Esta etapa do Projeto Integrador ImobFiscal acrescentou uma camada de proteção à API REST desenvolvida em Java 17 e Spring Boot 3.3. A mudança foi realizada na disciplina Desenvolvimento Web III e registrada no commit <code>f364c46 — Add Spring Security JWT and validation</code>. O objetivo não foi declarar que o sistema se tornou totalmente seguro, mas corrigir falhas importantes do fluxo anterior e estabelecer uma base verificável para autenticação, autorização, validação de dados e isolamento entre imobiliárias.</p>
+          <p>O ImobFiscal é um sistema web acadêmico para gerenciamento de imóveis, locadores, contratos, boletos e cálculos fiscais. A solução possui frontend em React, comunicação HTTP por Axios, backend em Spring Boot e persistência relacional com Spring Data JPA. MySQL ou MariaDB são usados nos ambientes de desenvolvimento e produção. O banco H2 aparece somente nos testes automatizados e no perfil local, porque cria um ambiente temporário e reproduzível; ele não substitui o banco de produção.</p>
+        </div>
+      </section>
+
+      <section id="problema" class="section security-report-section">
+        <div class="section-heading reveal"><p class="eyebrow">2–4 · Contexto, problema e objetivos</p><h2>Uma tela de login não protegia a API.</h2><p>O fluxo anterior parecia autenticado no navegador, mas o backend não reconhecia de forma confiável a identidade apresentada.</p></div>
+        <div class="security-report-prose wide reveal">
+          <h3>Contextualização da atividade</h3>
+          <p>A atividade propôs integrar Spring Security e Jakarta Bean Validation ao Projeto Integrador. O uso de JSON Web Token, ou JWT, era opcional, mas foi adotado por combinar com a API REST stateless do ImobFiscal. A alteração também deveria preservar os testes do motor tributário, evitando que a inclusão da segurança causasse regressão em funcionalidades existentes.</p>
+          <p>Antes da evolução, o login consultava o usuário e comparava a senha com BCrypt. Quando as credenciais estavam corretas, porém, a API devolvia apenas um UUID aleatório. O frontend armazenava esse valor e o enviava no cabeçalho <code>Authorization</code>, mas o backend não verificava assinatura, validade ou origem. Assim, o token não comprovava identidade e as rotas permaneciam acessíveis sem autenticação efetiva.</p>
+        </div>
+        <div class="security-before-after reveal">
+          <div><span>Antes</span><h3>Proteção apenas aparente</h3><ul><li>UUID aleatório usado como token.</li><li>Cabeçalho enviado, mas não validado.</li><li>Rotas da API abertas.</li><li>Tenant informado na URL sem conferência central.</li><li>Validações incompletas em alguns DTOs.</li></ul></div>
+          <div><span>Objetivo</span><h3>Proteção verificável</h3><ul><li>JWT assinado e com expiração.</li><li>Autenticação exigida em cada rota privada.</li><li>Tenant comparado com usuário, token e URL.</li><li>Respostas 400, 401, 403 e 409 padronizadas.</li><li>Testes automatizados do fluxo completo.</li></ul></div>
+        </div>
+        <div class="security-table-wrap reveal">
+          <table class="security-report-table"><thead><tr><th>Situação anterior</th><th>Risco associado</th></tr></thead><tbody><tr><td>Login retornava UUID aleatório</td><td>O valor não podia comprovar a identidade nem ser validado criptograficamente.</td></tr><tr><td><code>Authorization</code> não era conferido</td><td>Uma chamada direta à API podia ignorar o fluxo de login.</td></tr><tr><td>Rotas <code>/api/**</code> abertas</td><td>Recursos de locadores, imóveis, contratos e cobranças não exigiam autenticação.</td></tr><tr><td><code>imobiliariaId</code> recebido pela URL</td><td>Um usuário poderia tentar trocar o identificador para consultar outro tenant.</td></tr><tr><td>Ausência de controle central</td><td>Verificações repetidas em controllers poderiam ser esquecidas ou aplicadas de modo desigual.</td></tr></tbody></table>
+        </div>
+      </section>
+
+      <section id="fundamentacao" class="section security-concepts-section">
+        <div class="section-heading reveal"><p class="eyebrow">5 · Fundamentação teórica</p><h2>Sete conceitos que trabalham juntos.</h2><p>Autenticação, autorização e validação resolvem problemas diferentes. JWT e BCrypt são ferramentas dentro dessa arquitetura, não soluções isoladas.</p></div>
+        <div class="security-concepts-grid">
+          <article class="reveal"><span>5.1</span><h3>Autenticação e autorização</h3><p>Autenticação responde quem está fazendo a requisição. Autorização decide o que essa identidade pode fazer. O ImobFiscal já exige identidade e bloqueia outro tenant; regras por operação ainda são trabalho futuro.</p></article>
+          <article class="reveal"><span>5.2</span><h3>Spring Security</h3><p>Organiza a cadeia de filtros, o contexto autenticado e as decisões de acesso. A configuração libera somente as rotas públicas e exige autenticação nas demais rotas da API.</p></article>
+          <article class="reveal"><span>5.3</span><h3>JWT</h3><p>O token transporta claims e recebe uma assinatura. Ele não criptografa automaticamente o conteúdo: seu papel principal, nesta implementação, é garantir integridade e autenticidade.</p></article>
+          <article class="reveal"><span>5.4</span><h3>BCrypt</h3><p>Transforma a senha em um hash unidirecional com salt. No login, o backend compara a senha recebida com o hash, sem precisar guardar ou recuperar o texto original.</p></article>
+          <article class="reveal"><span>5.5</span><h3>API stateless</h3><p>O servidor não mantém uma sessão tradicional. Cada chamada protegida reapresenta o JWT, que é validado antes de recriar a autenticação daquela requisição.</p></article>
+          <article class="reveal"><span>5.6</span><h3>Bean Validation</h3><p>Anotações nos DTOs registram regras de formato e obrigatoriedade. O <code>@Valid</code> interrompe entradas inválidas antes que elas alcancem a regra de negócio.</p></article>
+          <article class="reveal"><span>5.7</span><h3>Isolamento multi-tenant</h3><p>Cada imobiliária representa um tenant. O filtro compara banco, token e URL para reduzir o risco de um usuário consultar dados de outra organização.</p></article>
+        </div>
+        <aside class="security-warning reveal"><strong>JWT não é um cofre.</strong><p>O payload pode ser decodificado por quem obtiver o token. Por isso, não contém senha. A assinatura permite detectar alterações. A chave deve ser forte, exclusiva por ambiente e armazenada em <code>JWT_SECRET</code>; a chave local nunca deve ser usada em produção.</p></aside>
+      </section>
+
+      <section id="arquitetura-seguranca" class="section security-architecture-section">
+        <div class="section-heading reveal"><p class="eyebrow">6–7 · Arquitetura e fluxo</p><h2>Da senha digitada ao controller protegido.</h2><p>O login produz uma credencial assinada. As requisições seguintes passam por uma nova verificação antes de alcançar as regras do sistema.</p></div>
+        <div class="security-flow-diagram reveal" aria-label="Fluxo da autenticação do ImobFiscal">
+          <div><span>01</span><strong>Usuário e React</strong><small>Informa e-mail e senha</small></div><b>→</b><div><span>02</span><strong>AuthController</strong><small>Recebe POST /api/auth/login</small></div><b>→</b><div><span>03</span><strong>BCrypt</strong><small>Compara senha e hash</small></div><b>→</b><div><span>04</span><strong>JwtService</strong><small>Assina o JWT</small></div><b>→</b><div><span>05</span><strong>Axios</strong><small>Envia Bearer token</small></div><b>→</b><div><span>06</span><strong>Filtro JWT</strong><small>Valida identidade e tenant</small></div><b>→</b><div><span>07</span><strong>Controller</strong><small>Processa a rota autorizada</small></div>
+        </div>
+        <ol class="security-decision-flow reveal">
+          <li><span>Bearer?</span><p>Sem token, uma rota pública continua. Uma rota protegida termina em <strong>401</strong>.</p></li>
+          <li><span>Válido?</span><p>Assinatura inválida ou token expirado resulta em <strong>401</strong>.</p></li>
+          <li><span>Usuário?</span><p>O filtro recarrega o cadastro. Usuário inexistente ou tenant incompatível resulta em <strong>401</strong>.</p></li>
+          <li><span>Tenant?</span><p>Se o UUID da URL for de outra imobiliária, a resposta é <strong>403</strong>.</p></li>
+          <li><span>Entrada?</span><p>Campos que violam as anotações de validação retornam <strong>400</strong>.</p></li>
+          <li><span>Aprovado</span><p>Com todas as verificações aprovadas, o controller realiza o processamento normal.</p></li>
+        </ol>
+        <div class="security-tech-stack reveal">
+          <div><p class="eyebrow">Tecnologias utilizadas</p><h3>Uma solução integrada do navegador ao banco.</h3></div>
+          <p><strong>Java 17 e Spring Boot 3.3</strong> formam a base da API. <strong>Spring Security</strong> organiza os filtros e o contexto autenticado; <strong>JJWT 0.12.6</strong> cria e valida o token; <strong>BCrypt</strong> trata as senhas; e <strong>Jakarta Bean Validation</strong> verifica os DTOs. A persistência usa <strong>Spring Data JPA</strong> com MySQL ou MariaDB. No frontend, <strong>React e Axios</strong> armazenam o estado autenticado e enviam o Bearer token. Os testes utilizam <strong>JUnit 5, MockMvc e H2</strong>. O H2 existe somente no perfil local e de testes para oferecer um banco temporário; o ambiente de produção continua dependente de um SGBD relacional configurado e de uma <code>JWT_SECRET</code> própria.</p>
+        </div>
+      </section>
+
+      <section id="codigo" class="section security-code-section">
+        <div class="section-heading reveal"><p class="eyebrow">8–13 · Funcionamento do código</p><h2>Trechos reais da implementação.</h2><p>Os exemplos foram reduzidos para destacar a responsabilidade de cada arquivo. Nenhuma senha, chave ou token real é exibido.</p></div>
+
+        <article class="security-code-article reveal">
+          <div class="security-code-copy"><p class="eyebrow">8 · SecurityFilterChain</p><h3>Configuração central das rotas</h3><p><strong>Arquivo:</strong> <code>backend/src/main/java/br/fatec/imobfiscal/config/SecurityConfig.java</code></p><p>O código desativa mecanismos que não pertencem ao fluxo da API, ativa CORS, define a política stateless, libera login, cadastro e health check e protege as demais rotas. Sem essa cadeia, o Bearer token não produziria uma decisão de acesso.</p><p>Uma rota protegida sem identidade retorna 401; acesso autenticado, mas proibido, retorna 403. A limitação atual é não aplicar regras detalhadas por perfil e operação.</p></div>
+          <pre><code>return http
+    .csrf(csrf -&gt; csrf.disable())
+    .formLogin(form -&gt; form.disable())
+    .httpBasic(basic -&gt; basic.disable())
+    .cors(cors -&gt; {})
+    .sessionManagement(session -&gt; session
+        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+    .authorizeHttpRequests(auth -&gt; auth
+        .requestMatchers("/api/auth/login",
+            "/api/auth/cadastro", "/api/health").permitAll()
+        .requestMatchers("/api/**").authenticated()
+        .anyRequest().permitAll())
+    .addFilterBefore(jwtAuthenticationFilter,
+        UsernamePasswordAuthenticationFilter.class)
+    .build();</code></pre>
+        </article>
+
+        <article class="security-code-article reveal">
+          <div class="security-code-copy"><p class="eyebrow">9 · JwtService</p><h3>Geração do token assinado</h3><p><strong>Arquivo:</strong> <code>backend/src/main/java/br/fatec/imobfiscal/security/JwtService.java</code></p><p>O token inclui o e-mail como subject, além de usuário, imobiliária, perfil, emissão e expiração. A assinatura impede que claims sejam alteradas sem invalidar o token. O payload não é criptografado e não recebe a senha.</p><p>A chave é convertida em HMAC e precisa ter ao menos 32 bytes. Em produção, <code>JWT_SECRET</code> deve ser exclusiva, aleatória e diferente da chave usada localmente.</p></div>
+          <pre><code>public String gerarToken(Usuario usuario) {
+    Instant agora = Instant.now();
+    return Jwts.builder()
+        .subject(usuario.getEmail())
+        .claim("usuarioId", usuario.getId().toString())
+        .claim("imobiliariaId",
+            usuario.getImobiliariaId().toString())
+        .claim("perfil", usuario.getPerfil().name())
+        .issuedAt(Date.from(agora))
+        .expiration(Date.from(
+            agora.plusMillis(expirationMs)))
+        .signWith(chave)
+        .compact();
+}</code></pre>
+        </article>
+
+        <article class="security-code-article reveal">
+          <div class="security-code-copy"><p class="eyebrow">9 · Validação do JWT</p><h3>Assinatura e expiração conferidas</h3><p><strong>Arquivo:</strong> <code>backend/src/main/java/br/fatec/imobfiscal/security/JwtService.java</code></p><p>O parser verifica a assinatura e rejeita tokens expirados. Uma falha produz uma exceção tratada pelo filtro, que limpa o contexto e responde 401.</p><p>Essa proteção depende da chave. Uma chave fraca, vazada ou reutilizada entre ambientes compromete a confiança na assinatura, motivo pelo qual o construtor bloqueia valores com menos de 32 bytes.</p></div>
+          <pre><code>public Claims validarEObterClaims(String token) {
+    return Jwts.parser()
+        .verifyWith(chave)
+        .build()
+        .parseSignedClaims(token)
+        .getPayload();
+}</code></pre>
+        </article>
+
+        <article class="security-code-article reveal">
+          <div class="security-code-copy"><p class="eyebrow">10 · Filtro JWT</p><h3>Leitura do cabeçalho Bearer</h3><p><strong>Arquivo:</strong> <code>backend/src/main/java/br/fatec/imobfiscal/security/JwtAuthenticationFilter.java</code></p><p>O filtro executa uma vez por requisição, lê <code>Authorization</code> e reconhece o prefixo Bearer. Sem token, a chamada continua sem autenticação: uma rota pública funciona, enquanto a configuração bloqueia uma rota privada.</p><p>Quando o token existe, o usuário é recarregado pelo e-mail. Isso impede aceitar normalmente um token de usuário que deixou de existir, embora a aplicação ainda não possua uma lista de revogação.</p></div>
+          <pre><code>String authorization = request.getHeader(
+    HttpHeaders.AUTHORIZATION);
+
+if (authorization == null
+        || !authorization.startsWith("Bearer ")) {
+    filterChain.doFilter(request, response);
+    return;
+}
+
+Claims claims = jwtService.validarEObterClaims(
+    authorization.substring(7));
+Usuario usuario = usuarioService
+    .buscarPorEmail(claims.getSubject())
+    .orElseThrow(() -&gt;
+        new JwtException("Usuário não encontrado"));</code></pre>
+        </article>
+
+        <article class="security-code-article reveal">
+          <div class="security-code-copy"><p class="eyebrow">10 · SecurityContextHolder</p><h3>Identidade reconhecida pelo Spring</h3><p><strong>Arquivo:</strong> <code>backend/src/main/java/br/fatec/imobfiscal/security/JwtAuthenticationFilter.java</code></p><p>Depois das verificações, o filtro cria um <code>UsernamePasswordAuthenticationToken</code>, adiciona o perfil como autoridade e registra a identidade no contexto. O controller passa a ser executado como uma requisição autenticada.</p><p>Os perfis já chegam ao contexto, mas isso não significa autorização completa. Regras como “somente ADMIN pode excluir” ainda precisam ser implementadas.</p></div>
+          <pre><code>var authorities = List.of(
+    new SimpleGrantedAuthority(
+        "ROLE_" + usuario.getPerfil().name()));
+var authentication =
+    new UsernamePasswordAuthenticationToken(
+        usuario.getEmail(), null, authorities);
+authentication.setDetails(Map.of(
+    "usuarioId", usuario.getId(),
+    "imobiliariaId", usuario.getImobiliariaId()));
+SecurityContextHolder.getContext()
+    .setAuthentication(authentication);</code></pre>
+        </article>
+
+        <article class="security-code-article reveal">
+          <div class="security-code-copy"><p class="eyebrow">11 · Isolamento multi-tenant</p><h3>Tenant do token comparado com a URL</h3><p><strong>Arquivo:</strong> <code>backend/src/main/java/br/fatec/imobfiscal/security/JwtAuthenticationFilter.java</code></p><p>O filtro reconhece rotas com <code>/api/imobiliarias/{id}</code> e compara o UUID da URL com o tenant do token. A verificação central reduz o risco de um controller esquecer esse controle.</p><p>Quando os valores divergem, o backend retorna 403. Novos endpoints precisam manter o padrão de URL ou adotar verificação equivalente na camada de serviço.</p></div>
+          <pre><code>Matcher matcher = ROTA_IMOBILIARIA.matcher(
+    request.getRequestURI());
+if (matcher.matches()
+        &amp;&amp; !imobiliariaDoToken.equals(
+            UUID.fromString(matcher.group(1)))) {
+    escreverErro(response, HttpStatus.FORBIDDEN,
+        "Acesso negado aos dados de outra imobiliária");
+    return;
+}</code></pre>
+        </article>
+
+        <article class="security-code-article reveal">
+          <div class="security-code-copy"><p class="eyebrow">12 · Bean Validation</p><h3>Entrada validada antes da regra de negócio</h3><p><strong>Arquivo:</strong> <code>backend/src/main/java/br/fatec/imobfiscal/model/ContratoRequest.java</code></p><p>As anotações verificam ausência, formato, valor mínimo e faixa do vencimento. Quando o controller recebe o DTO com <code>@Valid</code>, uma violação resulta em 400 e o manipulador global organiza os erros por campo.</p><p>O CPF ou CNPJ ainda é conferido apenas por tamanho e formato. A validação dos dígitos verificadores permanece como melhoria futura.</p></div>
+          <pre><code>@NotNull(message = "Imóvel obrigatório")
+UUID imovelId,
+
+@NotBlank
+@Size(min = 11, max = 14,
+    message = "CPF ou CNPJ inválido")
+@Pattern(regexp = "\\d{11}|\\d{14}",
+    message = "CPF/CNPJ deve conter 11 ou 14 números")
+String locatarioCpfCnpj,
+
+@NotNull
+@DecimalMin(value = "0.01",
+    message = "Valor do aluguel deve ser positivo")
+BigDecimal valorAluguel,
+
+@NotNull @Min(1) @Max(31)
+Integer diaVencimento</code></pre>
+        </article>
+
+        <article class="security-code-article reveal">
+          <div class="security-code-copy"><p class="eyebrow">13 · Axios</p><h3>Bearer token enviado automaticamente</h3><p><strong>Arquivo:</strong> <code>frontend/src/services/api.js</code></p><p>O interceptor lê o token armazenado pelo <code>AuthContext</code> e monta o cabeçalho em todas as chamadas feitas por essa instância. O frontend também usa a imobiliária retornada no login nas rotas autenticadas.</p><p>O cadastro público ainda utiliza um tenant padrão. Além disso, o armazenamento em <code>localStorage</code> exige prevenção de XSS; cookies HttpOnly podem ser avaliados em uma evolução da arquitetura.</p></div>
+          <pre><code>api.interceptors.request.use((config) =&gt; {
+  const token = localStorage.getItem(
+    'imobfiscal_token')
+
+  if (token) {
+    config.headers.Authorization =
+      `Bearer ${token}`
+  }
+
+  return config
+})</code></pre>
+        </article>
+      </section>
+
+      <section id="testes-seguranca" class="section security-tests-section">
+        <div class="section-heading reveal"><p class="eyebrow">14–15 · Testes e resultados</p><h2>O comportamento foi executado, não apenas descrito.</h2><p>A suíte foi rodada com o código fornecido e confirmou todos os 12 cenários sem falhas ou erros.</p></div>
+        <div class="security-test-result reveal"><div><span>BUILD</span><strong>SUCCESS</strong></div><dl><div><dt>Tests run</dt><dd>12</dd></div><div><dt>Failures</dt><dd>0</dd></div><div><dt>Errors</dt><dd>0</dd></div><div><dt>Skipped</dt><dd>0</dd></div></dl></div>
+        <div class="security-report-prose wide reveal"><p>Os testes usam JUnit 5, MockMvc e o perfil <code>test</code>. O H2 cria um banco temporário em memória no modo de compatibilidade com MySQL. Isso permite testar o fluxo de forma rápida e repetível, mas não transforma o H2 em banco de produção nem elimina a necessidade futura de testes complementares com MySQL ou MariaDB.</p></div>
+        <div class="security-test-code-grid">
+          <article class="reveal"><p class="eyebrow">401 · Sem token</p><h3>Rota privada bloqueada</h3><pre><code>mockMvc.perform(get(
+    "/api/imobiliarias/{id}/imoveis",
+    IMOBILIARIA_ID))
+  .andExpect(status().isUnauthorized())
+  .andExpect(jsonPath("$.message")
+    .value("Autenticação necessária"));</code></pre><p>O teste confirma que uma chamada anônima não alcança mais o recurso protegido.</p></article>
+          <article class="reveal"><p class="eyebrow">403 · Outro tenant</p><h3>Imobiliária diferente bloqueada</h3><pre><code>mockMvc.perform(get(
+    "/api/imobiliarias/{id}/imoveis",
+    outraImobiliaria)
+  .header("Authorization",
+    "Bearer " + token))
+  .andExpect(status().isForbidden())
+  .andExpect(jsonPath("$.message")
+    .value("Acesso negado aos dados de outra imobiliária"));</code></pre><p>O token é válido, mas a autorização falha porque o tenant da URL não pertence ao usuário.</p></article>
+        </div>
+        <div class="security-table-wrap reveal">
+          <table class="security-report-table"><thead><tr><th>Grupo de testes</th><th>Quantidade</th><th>Verificação principal</th></tr></thead><tbody><tr><td><code>JwtServiceTest</code></td><td>2</td><td>Geração, claims, expiração e recusa de chave curta.</td></tr><tr><td><code>ValidationTest</code></td><td>2</td><td>Rejeição de login, CEP, UF e valores inválidos.</td></tr><tr><td><code>SecurityIntegrationTest</code></td><td>5</td><td>Health público, 401, login, próprio tenant, 403 e erros 400.</td></tr><tr><td><code>MotorTributarioTest</code></td><td>3</td><td>Regressão do cálculo, alíquota ausente e isenção.</td></tr><tr><th>Total</th><th>12</th><th>Todos aprovados.</th></tr></tbody></table>
+        </div>
+        <div class="security-table-wrap reveal">
+          <table class="security-report-table http-table"><thead><tr><th>Código HTTP</th><th>Situação no ImobFiscal</th></tr></thead><tbody><tr><td>200 OK</td><td>Login válido, health check ou consulta autenticada permitida.</td></tr><tr><td>201 Created</td><td>Cadastro público concluído.</td></tr><tr><td>400 Bad Request</td><td>DTO com campos ausentes ou inválidos.</td></tr><tr><td>401 Unauthorized</td><td>Token ausente em rota protegida, inválido, expirado ou incompatível com o usuário.</td></tr><tr><td>403 Forbidden</td><td>Token válido tentando acessar outra imobiliária.</td></tr><tr><td>409 Conflict</td><td>E-mail já cadastrado.</td></tr><tr><td>500 Internal Server Error</td><td>Falha inesperada tratada pelo manipulador global.</td></tr></tbody></table>
+        </div>
+      </section>
+
+      <section class="section security-future-section">
+        <div class="section-heading reveal"><p class="eyebrow">16–17 · Limitações e próximos passos</p><h2>A camada reduz riscos, mas ainda precisa evoluir.</h2><p>Segurança não termina com a emissão do JWT. As limitações registradas orientam o backlog técnico.</p></div>
+        <div class="security-limitations-grid">
+          <article class="reveal"><h3>Limitações atuais</h3><ul><li>Logout não revoga imediatamente um JWT já emitido.</li><li>Perfis entram no contexto, mas ainda não controlam cada operação.</li><li>Cadastro público ainda usa um tenant padrão no frontend.</li><li>Política mínima de senha é simples para uso real.</li><li>JWT armazenado em <code>localStorage</code> exige proteção contra XSS.</li><li>Isolamento depende do padrão atual das URLs.</li><li>H2 não reproduz todas as particularidades do banco de produção.</li></ul></article>
+          <article class="reveal"><h3>Trabalhos futuros</h3><ul><li>Validar dígitos de CPF e CNPJ e coerência entre datas.</li><li>Controlar transições de status.</li><li>Autorizar por perfil e operação.</li><li>Implementar revogação e refresh token.</li><li>Bloquear tentativas repetidas e aplicar rate limiting.</li><li>Criar recuperação de senha e confirmação de e-mail.</li><li>Fortalecer política de senha e auditoria.</li><li>Adicionar unicidade por imobiliária e mais testes de segurança.</li></ul></article>
+        </div>
+      </section>
+
+      <section id="conclusao-seguranca" class="section security-conclusion-section">
+        <div class="section-heading reveal"><p class="eyebrow">18 · Conclusão</p><h2>Fazer login e proteger a API são coisas diferentes.</h2><p>A atividade transformou uma indicação visual de login em um fluxo que o servidor consegue verificar e testar.</p></div>
+        <div class="security-report-prose wide reveal">
+          <p>Na versão anterior, o frontend tratava um UUID aleatório como token, mas a API não reconhecia aquela identidade. Com Spring Security e JWT, cada requisição protegida passa por validação de assinatura, expiração, existência do usuário e compatibilidade do tenant. BCrypt preserva o tratamento adequado das senhas e Bean Validation reduz a entrada de dados inconsistentes.</p>
+          <p>O resultado adiciona uma camada real de proteção ao ImobFiscal e torna o comportamento observável por códigos HTTP e testes automatizados. Ao mesmo tempo, a análise crítica mostra que segurança é um processo contínuo. Revogação, autorização granular, política de senha, auditoria, proteção do frontend e testes adicionais ainda devem evoluir. O principal aprendizado foi compreender que autenticação, autorização, validação e isolamento de dados precisam trabalhar em conjunto.</p>
+        </div>
+        <div class="security-evidence-box reveal"><div><p class="eyebrow">Evidências</p><h3>Materiais relacionados</h3></div><div class="security-evidence-links"><a href="assets/atividades/projeto-integrador/SEGURANCA-SPRING.md" download>Relatório Markdown ↓</a><a href="https://github.com/DanielDoneda/imobfiscal/commit/f364c46" target="_blank" rel="noopener noreferrer">Commit f364c46 ↗</a><a href="https://github.com/DanielDoneda/imobfiscal" target="_blank" rel="noopener noreferrer">Repositório ↗</a></div></div>
+      </section>
+
+      <section class="section security-references-section">
+        <div class="section-heading reveal"><p class="eyebrow">19 · Referências</p><h2>Documentação técnica consultada.</h2><p>Foram priorizadas especificações e documentações oficiais, com acesso em 31 de outubro de 2026.</p></div>
+        <ol class="security-references reveal">
+          <li>IETF. <a href="https://www.rfc-editor.org/rfc/rfc7519" target="_blank" rel="noopener noreferrer">RFC 7519 — JSON Web Token</a>. RFC Editor, 2015.</li>
+          <li>Jakarta EE. <a href="https://jakarta.ee/specifications/bean-validation/3.0/jakarta-bean-validation-spec-3.0.html" target="_blank" rel="noopener noreferrer">Jakarta Bean Validation 3.0 Specification</a>. Eclipse Foundation.</li>
+          <li>JJWT. <a href="https://github.com/jwtk/jjwt/blob/main/README.adoc" target="_blank" rel="noopener noreferrer">Java JWT Documentation</a>.</li>
+          <li>JUnit Team. <a href="https://docs.junit.org/current/user-guide/" target="_blank" rel="noopener noreferrer">JUnit 5 User Guide</a>.</li>
+          <li>OWASP Foundation. <a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html" target="_blank" rel="noopener noreferrer">Authentication Cheat Sheet</a>.</li>
+          <li>OWASP Foundation. <a href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html" target="_blank" rel="noopener noreferrer">Password Storage Cheat Sheet</a>.</li>
+          <li>Spring. <a href="https://docs.spring.io/spring-boot/3.3/documentation.html" target="_blank" rel="noopener noreferrer">Spring Boot Reference Documentation 3.3</a>.</li>
+          <li>Spring. <a href="https://docs.spring.io/spring-security/reference/" target="_blank" rel="noopener noreferrer">Spring Security Reference</a>.</li>
+        </ol>
+      </section>
+    </main>
+
+    <footer><p>Daniel Doneda · Portfólio acadêmico · 2026</p><p>Projeto Integrador · ImobFiscal · Segurança</p></footer>
+  </body>
+</html>

@@ -284,6 +284,126 @@ h1 span { color: var(--green); }
 .pi-final-links { display: flex; align-items: center; justify-content: space-between; gap: 2rem; margin-top: 3rem; padding: clamp(1.5rem,3vw,2.2rem); border-radius: 1.2rem; background: var(--lime); }
 .pi-final-links h3 { margin-bottom: 0; font-size: clamp(1.5rem,3vw,2.5rem); letter-spacing: -.04em; }
 .pi-final-links .hero-actions { margin-top: 0; }
+.pi-security-overview-section { background: var(--forest); color: var(--white); }
+.pi-security-overview-section .eyebrow { color: var(--lime); }
+.pi-security-overview-section .section-heading > p:last-child { color: #b8c7c0; }
+.pi-security-overview-grid { display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid rgba(255,255,255,.2); border-left: 1px solid rgba(255,255,255,.2); }
+.pi-security-overview-grid article { min-height: 300px; padding: 1.5rem; border-right: 1px solid rgba(255,255,255,.2); border-bottom: 1px solid rgba(255,255,255,.2); }
+.pi-security-overview-grid span { color: var(--lime); font: 500 .72rem "DM Mono",monospace; text-transform: uppercase; }
+.pi-security-overview-grid h3 { margin: 4.5rem 0 .8rem; font-size: 1.45rem; letter-spacing: -.03em; }
+.pi-security-overview-grid p { margin-bottom: 0; color: #b8c7c0; line-height: 1.65; }
+.pi-security-overview-action { display: flex; align-items: center; justify-content: space-between; gap: 2rem; margin-top: 1rem; padding: clamp(1.5rem,3vw,2.2rem); border-radius: 1.2rem; background: var(--lime); color: var(--ink); }
+.pi-security-overview-action .eyebrow { color: var(--green); }
+.pi-security-overview-action h3 { margin-bottom: 0; font-size: clamp(1.5rem,3vw,2.4rem); letter-spacing: -.04em; }
+.pi-security-overview-action .hero-actions { margin-top: 0; }
+
+/* Relatório de segurança do Projeto Integrador */
+.security-report-page { background: var(--paper); }
+.security-report-hero { min-height: calc(100vh - 69px); display: grid; grid-template-columns: minmax(0,1.25fr) minmax(300px,.75fr); gap: 4rem; align-items: center; padding: 7rem clamp(1.2rem,7vw,7rem); background: radial-gradient(circle at 88% 12%,rgba(184,242,213,.7),transparent 30%),linear-gradient(155deg,#f4f1e8 0%,#e7efe8 100%); }
+.security-report-hero h1 { font-size: clamp(3.8rem,8vw,8rem); }
+.security-report-hero h1 span { color: var(--green); }
+.security-report-lead { max-width: 760px; font-size: clamp(1.05rem,1.8vw,1.4rem); line-height: 1.7; }
+.security-report-summary { padding: clamp(1.5rem,3vw,2.3rem); border-radius: 1.5rem; background: var(--forest); color: var(--white); box-shadow: 0 30px 60px rgba(17,38,31,.18); }
+.security-report-summary .eyebrow { color: var(--lime); }
+.security-report-summary > strong { display: block; margin: 1.6rem 0 .7rem; color: var(--lime); font-size: clamp(4rem,8vw,7rem); line-height: .9; letter-spacing: -.08em; }
+.security-report-summary > p { color: #c2cec9; line-height: 1.7; }
+.security-report-summary dl { margin: 1.8rem 0 0; }
+.security-report-summary dl div { display: flex; justify-content: space-between; gap: 1rem; padding: .85rem 0; border-top: 1px solid rgba(255,255,255,.15); font-size: .8rem; }
+.security-report-summary dt { color: #aebdb6; }
+.security-report-summary dd { margin: 0; text-align: right; font-weight: 700; }
+.security-report-intro { display: grid; grid-template-columns: .55fr 1.45fr; gap: 4rem; background: var(--white); }
+.security-report-kicker { align-self: start; position: sticky; top: 130px; padding-top: .7rem; border-top: 1px solid var(--line); }
+.security-report-kicker span { color: var(--green); font: 500 .72rem "DM Mono",monospace; }
+.security-report-kicker p { max-width: 270px; font-size: 1.1rem; font-weight: 800; line-height: 1.4; }
+.security-report-prose { max-width: 850px; }
+.security-report-prose.wide { max-width: 1050px; margin-left: auto; }
+.security-report-prose h3 { margin-bottom: 1.2rem; font-size: clamp(1.8rem,3vw,2.8rem); letter-spacing: -.04em; }
+.security-report-prose p { color: #4f5e57; font-size: 1.04rem; line-height: 1.85; }
+.security-report-prose p + p { margin-top: 1.3rem; }
+.security-report-section { background: var(--paper); }
+.security-before-after { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; margin: 3rem 0 1rem; }
+.security-before-after > div { min-height: 360px; padding: clamp(1.5rem,3vw,2.2rem); border-radius: 1.2rem; background: var(--forest); color: var(--white); }
+.security-before-after > div:last-child { background: var(--lime); color: var(--ink); }
+.security-before-after span { color: var(--lime); font: 500 .72rem "DM Mono",monospace; text-transform: uppercase; }
+.security-before-after > div:last-child span { color: var(--green); }
+.security-before-after h3 { margin: 3.5rem 0 1rem; font-size: clamp(1.7rem,3vw,2.4rem); letter-spacing: -.04em; }
+.security-before-after ul { margin: 0; padding-left: 1.15rem; color: #c2cec9; line-height: 1.75; }
+.security-before-after > div:last-child ul { color: #34483f; }
+.security-table-wrap { overflow-x: auto; margin-top: 1rem; border: 1px solid var(--line); border-radius: 1rem; }
+.security-report-table { width: 100%; min-width: 680px; border-collapse: collapse; background: var(--white); text-align: left; }
+.security-report-table th, .security-report-table td { padding: 1rem 1.2rem; border-bottom: 1px solid var(--line); vertical-align: top; line-height: 1.6; }
+.security-report-table thead th { background: var(--forest); color: var(--white); font: 500 .72rem "DM Mono",monospace; text-transform: uppercase; }
+.security-report-table tbody th { color: var(--green); }
+.security-report-table tbody td { color: #53615b; }
+.security-report-table tr:last-child th, .security-report-table tr:last-child td { border-bottom: 0; }
+.security-concepts-section { background: #e7efe8; }
+.security-concepts-grid { display: grid; grid-template-columns: repeat(6,1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.security-concepts-grid article { grid-column: span 2; min-height: 280px; padding: 1.5rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,.62); }
+.security-concepts-grid article:nth-child(7) { grid-column: span 6; min-height: auto; }
+.security-concepts-grid span { color: var(--green); font: 500 .72rem "DM Mono",monospace; }
+.security-concepts-grid h3 { margin: 4rem 0 .8rem; font-size: 1.45rem; letter-spacing: -.03em; }
+.security-concepts-grid article:nth-child(7) h3 { margin-top: 1.8rem; }
+.security-concepts-grid p { margin-bottom: 0; color: #53615b; line-height: 1.7; }
+.security-warning { display: grid; grid-template-columns: .35fr 1.65fr; gap: 2rem; margin-top: 1rem; padding: clamp(1.5rem,3vw,2.2rem); border-left: 5px solid #d2a33e; background: #fff2de; }
+.security-warning strong { font-size: 1.5rem; }
+.security-warning p { margin: 0; color: #53615b; line-height: 1.75; }
+.security-architecture-section { background: var(--forest); color: var(--white); }
+.security-architecture-section .eyebrow { color: var(--lime); }
+.security-architecture-section .section-heading > p:last-child { color: #b8c7c0; }
+.security-flow-diagram { display: grid; grid-template-columns: repeat(13,auto); align-items: center; gap: .6rem; overflow-x: auto; padding: 1.2rem; border: 1px solid rgba(255,255,255,.18); border-radius: 1.2rem; }
+.security-flow-diagram > div { min-width: 155px; min-height: 165px; display: flex; flex-direction: column; padding: 1.1rem; border: 1px solid rgba(255,255,255,.16); border-radius: .9rem; background: rgba(255,255,255,.06); }
+.security-flow-diagram span, .security-flow-diagram small { color: #aebdb6; font: 500 .67rem "DM Mono",monospace; }
+.security-flow-diagram strong { margin: auto 0 .6rem; color: var(--lime); font-size: 1.05rem; }
+.security-flow-diagram b { color: var(--mint); }
+.security-decision-flow { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+.security-decision-flow li { min-height: 175px; padding: 1.2rem; border: 1px solid rgba(255,255,255,.18); border-radius: .9rem; background: rgba(255,255,255,.04); }
+.security-decision-flow span { color: var(--lime); font: 500 .72rem "DM Mono",monospace; text-transform: uppercase; }
+.security-decision-flow p { margin: 2.5rem 0 0; color: #b8c7c0; line-height: 1.6; }
+.security-decision-flow strong { color: var(--white); }
+.security-tech-stack { display: grid; grid-template-columns: .7fr 1.3fr; gap: 2rem; margin-top: 1rem; padding: clamp(1.5rem,3vw,2.2rem); border-radius: 1.2rem; background: var(--lime); color: var(--ink); }
+.security-tech-stack .eyebrow { color: var(--green); }
+.security-tech-stack h3 { margin-bottom: 0; font-size: clamp(1.6rem,3vw,2.4rem); letter-spacing: -.04em; }
+.security-tech-stack > p { margin: 0; color: #34483f; line-height: 1.75; }
+.security-code-section { background: var(--paper); }
+.security-code-article { display: grid; grid-template-columns: .85fr 1.15fr; gap: 2rem; margin-top: 1rem; padding: clamp(1.4rem,3vw,2.2rem); border: 1px solid var(--line); border-radius: 1.2rem; background: var(--white); }
+.security-code-copy h3 { font-size: clamp(1.6rem,3vw,2.3rem); letter-spacing: -.04em; }
+.security-code-copy p { color: #53615b; line-height: 1.72; }
+.security-code-copy code { overflow-wrap: anywhere; }
+.security-code-article pre, .security-test-code-grid pre { overflow-x: auto; margin: 0; padding: 1.4rem; border-radius: .9rem; background: #0d1d18; color: #d9f58c; font: 400 .78rem/1.65 "DM Mono",monospace; tab-size: 2; }
+.security-code-article pre code, .security-test-code-grid pre code { color: inherit; background: transparent; }
+.security-tests-section { background: var(--white); }
+.security-test-result { display: grid; grid-template-columns: .7fr 1.3fr; border-radius: 1.2rem; overflow: hidden; background: var(--forest); color: var(--white); }
+.security-test-result > div { display: flex; flex-direction: column; justify-content: center; padding: 2rem; background: var(--lime); color: var(--ink); }
+.security-test-result > div span { font: 500 .72rem "DM Mono",monospace; }
+.security-test-result > div strong { margin-top: .4rem; font-size: clamp(2.7rem,6vw,5rem); letter-spacing: -.07em; }
+.security-test-result dl { display: grid; grid-template-columns: repeat(4,1fr); margin: 0; }
+.security-test-result dl div { display: flex; flex-direction: column; justify-content: center; padding: 1.3rem; border-left: 1px solid rgba(255,255,255,.15); }
+.security-test-result dt { color: #aebdb6; font: 500 .68rem "DM Mono",monospace; }
+.security-test-result dd { margin: .8rem 0 0; color: var(--lime); font-size: 2.2rem; font-weight: 800; }
+.security-tests-section .security-report-prose { margin-top: 2rem; }
+.security-test-code-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; margin-top: 1rem; }
+.security-test-code-grid article { min-width: 0; padding: 1.5rem; border: 1px solid var(--line); border-radius: 1rem; background: var(--paper); }
+.security-test-code-grid h3 { font-size: 1.5rem; }
+.security-test-code-grid pre { margin: 1.5rem 0; font-size: .72rem; }
+.security-test-code-grid article > p:last-child { color: #53615b; line-height: 1.65; }
+.http-table td:first-child { color: var(--green); font-weight: 800; white-space: nowrap; }
+.security-future-section { background: #f2d89e; }
+.security-limitations-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; }
+.security-limitations-grid article { padding: clamp(1.5rem,3vw,2.2rem); border: 1px solid rgba(20,35,29,.28); border-radius: 1.2rem; background: rgba(255,255,255,.35); }
+.security-limitations-grid h3 { font-size: clamp(1.8rem,3vw,2.6rem); letter-spacing: -.04em; }
+.security-limitations-grid ul { margin: 2rem 0 0; padding-left: 1.2rem; line-height: 1.75; }
+.security-limitations-grid li + li { margin-top: .65rem; }
+.security-conclusion-section { background: var(--white); }
+.security-evidence-box { display: grid; grid-template-columns: .7fr 1.3fr; gap: 2rem; margin-top: 3rem; padding: clamp(1.5rem,3vw,2.2rem); border-radius: 1.2rem; background: var(--lime); }
+.security-evidence-box h3 { margin-bottom: 0; font-size: clamp(1.7rem,3vw,2.5rem); }
+.security-evidence-links { display: flex; flex-wrap: wrap; align-content: center; gap: .7rem; }
+.security-evidence-links a { padding: .75rem 1rem; border: 1px solid var(--ink); border-radius: 99px; color: var(--ink); font: 600 .7rem "DM Mono",monospace; text-decoration: none; }
+.security-evidence-links a:hover, .security-evidence-links a:focus-visible { background: var(--forest); color: var(--white); }
+.security-references-section { background: #e7efe8; }
+.security-references { max-width: 1000px; margin: 0 0 0 auto; padding: 0; list-style: none; counter-reset: refs; border-top: 1px solid var(--line); }
+.security-references li { counter-increment: refs; display: grid; grid-template-columns: 60px 1fr; gap: 1rem; padding: 1.2rem 0; border-bottom: 1px solid var(--line); color: #53615b; line-height: 1.65; }
+.security-references li::before { content: counter(refs,decimal-leading-zero); color: var(--green); font: 500 .72rem "DM Mono",monospace; }
+.security-references a { color: var(--green); font-weight: 800; }
 
 .about-section { display: grid; grid-template-columns: .65fr 1.35fr; gap: 3rem; }
 .about-label span { display: inline-block; padding: .5rem .8rem; border: 1px solid var(--ink); border-radius: 99px; font: 500 .72rem "DM Mono", monospace; text-transform: uppercase; }
@@ -462,7 +582,7 @@ footer p { margin: 0; }
   .menu-button { display: block; }
   .nav { position: absolute; top: 100%; left: 0; right: 0; display: none; flex-direction: column; padding: 1.2rem; background: var(--paper); border-bottom: 1px solid var(--line); }
   .nav.open { display: flex; }
-  .hero, .section-heading, .pi-intro, .about-section, .contact-intro, .pi-project-hero, .pi-team-placeholder, .pi-guidance-downloads { grid-template-columns: 1fr; }
+  .hero, .section-heading, .pi-intro, .about-section, .contact-intro, .pi-project-hero, .pi-team-placeholder, .pi-guidance-downloads, .security-report-hero, .security-report-intro, .security-warning, .security-test-result, .security-evidence-box, .security-tech-stack { grid-template-columns: 1fr; }
   .detail-hero { grid-template-columns: 1fr; }
   .detail-header { flex-wrap: wrap; }
   .detail-nav { order: 3; width: 100%; justify-content: flex-start; overflow-x: auto; padding-top: .8rem; border-top: 1px solid var(--line); scrollbar-width: thin; }
@@ -485,8 +605,16 @@ footer p { margin: 0; }
   .pi-technical-flow ol { grid-template-columns: repeat(2,1fr); }
   .pi-results-grid { grid-template-columns: repeat(2,1fr); }
   .pi-team-grid { grid-template-columns: repeat(2,1fr); }
+  .pi-security-overview-grid { grid-template-columns: repeat(2,1fr); }
+  .pi-security-overview-action { align-items: stretch; flex-direction: column; }
   .security-context, .security-tech, .security-tests { grid-template-columns: 1fr; }
   .security-risk-grid, .security-improvement-grid, .auth-flow { grid-template-columns: repeat(2,1fr); }
+  .security-report-kicker { position: static; }
+  .security-concepts-grid { grid-template-columns: repeat(2,1fr); }
+  .security-concepts-grid article, .security-concepts-grid article:nth-child(7) { grid-column: span 1; }
+  .security-code-article { grid-template-columns: 1fr; }
+  .security-decision-flow { grid-template-columns: repeat(2,1fr); }
+  .security-test-result dl { grid-template-columns: repeat(2,1fr); }
 }
 @media (max-width: 600px) {
   .section { padding-block: 5rem; }
@@ -516,8 +644,19 @@ footer p { margin: 0; }
   .pi-nosql-note { grid-template-columns: 1fr; gap: 1rem; }
   .pi-final-links { align-items: stretch; flex-direction: column; }
   .pi-final-links .hero-actions { align-items: stretch; }
+  .pi-security-overview-grid { grid-template-columns: 1fr; }
+  .pi-security-overview-grid article { min-height: auto; }
+  .pi-security-overview-grid h3 { margin-top: 2.5rem; }
+  .pi-security-overview-action .hero-actions { align-items: stretch; flex-direction: column; }
   .topics-grid, .tasks-grid, .integration-layout { grid-template-columns: 1fr; }
   .security-risk-grid, .security-improvement-grid, .auth-flow, .security-comparison { grid-template-columns: 1fr; }
+  .security-before-after, .security-concepts-grid, .security-decision-flow, .security-test-code-grid, .security-limitations-grid { grid-template-columns: 1fr; }
+  .security-concepts-grid article, .security-concepts-grid article:nth-child(7) { min-height: auto; }
+  .security-concepts-grid h3 { margin-top: 2rem; }
+  .security-test-result dl { grid-template-columns: repeat(2,1fr); }
+  .security-test-result dl div { border-top: 1px solid rgba(255,255,255,.15); }
+  .security-code-article pre, .security-test-code-grid pre { font-size: .68rem; }
+  .security-references li { grid-template-columns: 40px 1fr; }
   .security-risk-card, .security-improvement-grid article, .auth-flow li { min-height: auto; }
   .security-risk-card h4, .security-improvement-grid p, .auth-flow h4 { margin-top: 1.8rem; }
   .metric-grid { grid-template-columns: 1fr; }
