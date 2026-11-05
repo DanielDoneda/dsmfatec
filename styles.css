@@ -99,6 +99,10 @@ h1 span { color: var(--green); }
 .activity-meta { display: flex; flex-direction: column; justify-content: center; padding-left: 2rem; border-left: 1px solid var(--line); }
 .activity-meta span, .activity-meta small { color: #5a655f; }
 .activity-meta strong { margin: .35rem 0; font-size: 1.25rem; }
+.empty-activities { display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: center; padding: clamp(1.4rem,3vw,2.2rem); border: 1px solid var(--green); border-radius: 1rem; background: var(--white); }
+.empty-activities > span { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 50%; background: var(--mint); color: var(--forest); font-size: 1.4rem; font-weight: 800; }
+.empty-activities h3 { margin: 0 0 .35rem; }
+.empty-activities p { margin: 0; color: #53615b; line-height: 1.6; }
 
 .pi-section { background: var(--forest); color: var(--white); }
 .pi-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 4rem; }
