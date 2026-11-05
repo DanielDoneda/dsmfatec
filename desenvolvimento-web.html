@@ -11,14 +11,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=6" />
+    <link rel="stylesheet" href="styles.css?v=8" />
     <script src="script.js?v=2" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
     <header class="detail-header">
       <a class="brand" href="index.html"><img class="brand-logo" src="assets/logo-circulo.png" alt="" /><span>Portfólio DSM</span></a>
-      <nav class="detail-nav" aria-label="Navegação da disciplina"><a href="#conteudos">Conteúdo</a><a href="#atividades">Atividades</a><a href="#seguranca-spring">Segurança</a><a href="#microservicos">Microserviços</a><a href="#testes-integracao">Testes de Integração</a><a href="#comentario">Comentário</a></nav>
+      <nav class="detail-nav" aria-label="Navegação da disciplina"><a href="#conteudos">Conteúdo</a><a href="#atividades">Atividades</a><a href="#spa-mpa">SPA × MPA</a><a href="#seguranca-spring">Segurança</a><a href="#microservicos">Microserviços</a><a href="#testes-integracao">Testes de Integração</a><a href="#comentario">Comentário</a></nav>
       <a class="back-link" href="index.html#disciplinas">← Voltar às disciplinas</a>
     </header>
 
@@ -26,13 +26,13 @@
       <section class="detail-hero">
         <div class="reveal"><p class="eyebrow">Disciplina 04 · 3º semestre · 2026</p><h1>Desenvolvimento<br /><span>Web III.</span></h1></div>
         <aside class="detail-summary reveal">
-          <p>A disciplina aproxima desenvolvimento, qualidade e segurança, mostrando como testes e proteção de acesso tornam uma aplicação mais confiável.</p>
-          <dl><div><dt>Curso</dt><dd>DSM · FATEC Indaiatuba</dd></div><div><dt>Foco atual</dt><dd>Spring Boot, testes e segurança</dd></div></dl>
+          <p>A disciplina aproxima arquitetura, desenvolvimento, qualidade e segurança, mostrando como as decisões técnicas afetam a experiência e a confiabilidade de uma aplicação.</p>
+          <dl><div><dt>Curso</dt><dd>DSM · FATEC Indaiatuba</dd></div><div><dt>Foco atual</dt><dd>SPA, Spring Boot, testes e segurança</dd></div></dl>
         </aside>
       </section>
 
       <section id="conteudos" class="section content-section">
-        <div class="section-heading reveal"><p class="eyebrow">Conteúdo abordado</p><h2>Qualidade e testes</h2><p>Os pontos principais da matéria, em linguagem direta e ligados ao desenvolvimento de aplicações web.</p></div>
+        <div class="section-heading reveal"><p class="eyebrow">Conteúdo abordado</p><h2>Arquitetura, qualidade e testes</h2><p>Os pontos principais da matéria, em linguagem direta e ligados ao desenvolvimento de aplicações web.</p></div>
         <div class="topics-grid">
           <article class="topic-card reveal"><span>01</span><h3>Qualidade de software</h3><p>Qualidade vem de requisitos claros, código organizado, revisão, testes e melhoria contínua. Não é algo colocado apenas no final.</p></article>
           <article class="topic-card reveal"><span>02</span><h3>Teste de software</h3><p>É executar e verificar partes do sistema para descobrir defeitos e confirmar se o comportamento esperado foi atendido.</p></article>
@@ -43,12 +43,22 @@
           <article class="topic-card reveal"><span>07</span><h3>Equipe e processo</h3><p>Qualidade é responsabilidade de todos. Testes acompanham análise, desenvolvimento, integração e entrega, em vez de formar uma etapa separada.</p></article>
           <article class="topic-card reveal"><span>08</span><h3>Ferramentas e automação</h3><p>Ferramentas ajudam quando existem testes repetitivos, regressões frequentes e necessidade de retorno rápido. Nem todo teste precisa ser automatizado.</p></article>
           <article class="topic-card reveal"><span>09</span><h3>Automatizar com critério</h3><p>Vale automatizar cenários estáveis, importantes e executados muitas vezes. Exploração, usabilidade e situações raras ainda pedem avaliação humana.</p></article>
+          <article class="topic-card reveal"><span>10</span><h3>Single Page Application</h3><p>Na SPA, um único documento é carregado e o JavaScript troca apenas o conteúdo necessário. Isso favorece interações contínuas e a preservação do estado temporário.</p></article>
+          <article class="topic-card reveal"><span>11</span><h3>Multiple Page Application</h3><p>Na MPA, a navegação abre documentos HTML diferentes. A estrutura pode ser mais simples, mas cada troca de página reconstrói a interface e pode perder estados temporários.</p></article>
+          <article class="topic-card reveal"><span>12</span><h3>Escolha de arquitetura</h3><p>SPA e MPA não são uma disputa com vencedora única. A melhor escolha depende da interação, do conteúdo, da equipe e das necessidades reais do projeto.</p></article>
         </div>
       </section>
 
       <section id="atividades" class="section activities-section">
         <div class="section-heading reveal"><p class="eyebrow">Atividades</p><h2>Prática e avaliação</h2><p>Entregas já feitas e próximas atividades da disciplina.</p></div>
         <div class="tasks-grid">
+          <article id="atividade-spa" class="task-card deadline-card reveal">
+            <span class="task-type">Atividade de Fixação · Entrega em 09/11/2026 às 23h59</span>
+            <h3>SPA: pontos positivos, negativos e demonstração prática</h3>
+            <p>Atividade em dupla para discutir vantagens e limitações de uma Single Page Application e apresentar uma comparação prática com uma aplicação tradicional de múltiplas páginas.</p>
+            <p>O resultado é o <strong>TaskFlow Pro</strong>: o mesmo gerenciador de tarefas implementado como SPA e MPA para tornar visível o que acontece com a navegação, o carregamento e o estado temporário.</p>
+            <a class="download-link" href="#spa-mpa">Ver atividade e demonstração →</a>
+          </article>
           <article id="microservicos" class="task-card completed-task reveal">
             <span class="task-type">Trabalho · Entregue em 08/09/2026</span>
             <h3>Loja virtual: Monolito, SOA e Microsserviços</h3>
@@ -78,6 +88,71 @@
             <p>A prática mostrou a diferença entre uma API que apenas funciona e uma API preparada para proteger usuários, credenciais e rotas.</p>
             <a class="download-link" href="#seguranca-spring">Ver análise e implementação →</a>
           </article>
+        </div>
+      </section>
+
+      <section id="spa-mpa" class="section spa-case-section">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Atividade de Fixação · SPA</p>
+          <h2>TaskFlow Pro: a diferença aparece no uso.</h2>
+          <p>As duas versões têm aparência, dados e funções equivalentes. O que muda é a forma como o navegador troca as telas.</p>
+        </div>
+
+        <div class="spa-demo-hero reveal">
+          <div>
+            <span>HTML + CSS + JavaScript</span>
+            <h3>Um gerenciador de tarefas, duas arquiteturas.</h3>
+          </div>
+          <p>A demonstração permite iniciar um cronômetro, pesquisar tarefas e navegar entre Tarefas e Kanban. Assim fica fácil observar quando o estado temporário continua e quando a página é carregada novamente.</p>
+        </div>
+
+        <div class="spa-comparison-grid">
+          <article class="spa-comparison-card spa-version reveal">
+            <span>SPA</span>
+            <h3>Experiência contínua</h3>
+            <ul>
+              <li>Carrega um documento principal.</li>
+              <li>Troca apenas a área necessária da interface.</li>
+              <li>Mantém cronômetro, pesquisa e filtros durante a navegação.</li>
+              <li>É interessante para sistemas com bastante interação.</li>
+            </ul>
+            <p><strong>Ponto de atenção:</strong> exige mais organização no JavaScript, no gerenciamento de estado e nas rotas internas.</p>
+          </article>
+          <article class="spa-comparison-card mpa-version reveal">
+            <span>MPA</span>
+            <h3>Páginas independentes</h3>
+            <ul>
+              <li>Usa documentos HTML diferentes para cada tela.</li>
+              <li>Recarrega e reconstrói a interface ao navegar.</li>
+              <li>Reinicia o cronômetro e perde a pesquisa temporária.</li>
+              <li>Pode ser adequada para sites simples e pouco interativos.</li>
+            </ul>
+            <p><strong>Ponto de atenção:</strong> as trocas de página podem interromper a experiência e repetir o carregamento de recursos.</p>
+          </article>
+        </div>
+
+        <div class="spa-experiment reveal">
+          <div>
+            <p class="eyebrow">Experimento sugerido</p>
+            <h3>Faça a mesma sequência nas duas versões.</h3>
+          </div>
+          <ol>
+            <li><span>01</span>Abra a SPA e a MPA em janelas diferentes.</li>
+            <li><span>02</span>Inicie o cronômetro nas duas versões.</li>
+            <li><span>03</span>Em Tarefas, pesquise por “apresentação”.</li>
+            <li><span>04</span>Vá ao Kanban, retorne e compare o resultado.</li>
+          </ol>
+        </div>
+
+        <div class="spa-result reveal">
+          <div><span>Resultado esperado</span><h3>Na SPA, o estado continua. Na MPA, a página recomeça.</h3></div>
+          <p>O projeto também mostra uma telemetria didática para representar cargas completas e transições internas. Os valores em KB são simulações usadas para facilitar a comparação; não são medições reais da rede.</p>
+        </div>
+
+        <div class="spa-actions reveal">
+          <a class="button primary" href="taskflow-pro/index.html" target="_blank" rel="noopener">Executar o TaskFlow Pro ↗</a>
+          <a class="button secondary" href="assets/atividades/web-iii/taskflow-pro/taskflow-pro-comparativo-spa-vs-mpa.zip" download>Baixar código completo ↓</a>
+          <a class="button secondary" href="assets/atividades/web-iii/taskflow-pro/orientacoes-taskflow-pro.pdf" download>Baixar orientações em PDF ↓</a>
         </div>
       </section>
 
