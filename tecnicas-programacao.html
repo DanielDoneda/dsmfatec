@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=2" />
+  <link rel="stylesheet" href="styles.css?v=10" />
   <script src="script.js?v=3" defer></script>
 </head>
 <body>
@@ -19,7 +19,7 @@
   <header class="detail-header">
     <a class="brand" href="index.html"><img class="brand-logo" src="assets/logo-circulo.png" alt="" /><span>Portfólio DSM</span></a>
     <nav class="detail-nav" aria-label="Navegação da disciplina">
-      <a href="#conteudos">Conteúdo</a><a href="#aulas">Aulas</a><a href="#atividades">Atividades</a><a href="#comentario">Comentário</a>
+      <a href="#conteudos">Conteúdo</a><a href="#aulas">Aulas</a><a href="#gestao-financeira">Gestão Financeira</a><a href="#atividades">Atividades</a><a href="#comentario">Comentário</a>
     </nav>
     <a class="back-link" href="index.html#disciplinas">← Voltar às disciplinas</a>
   </header>
@@ -41,6 +41,8 @@
         <article class="topic-card reveal"><span>04</span><h3>Polimorfismo</h3><p>Objetos diferentes podem responder ao mesmo comando de maneiras próprias, mantendo uma interface comum e reduzindo dependências.</p></article>
         <article class="topic-card reveal"><span>05</span><h3>Design patterns</h3><p>Padrões de projeto são soluções conceituais comprovadas para problemas recorrentes. Dividem-se em criacionais, estruturais e comportamentais.</p></article>
         <article class="topic-card reveal"><span>06</span><h3>MVC, MVP e MVVM</h3><p>As três arquiteturas separam dados, interface e mediação. Elas diferem principalmente no papel do Controller, Presenter ou ViewModel.</p></article>
+        <article class="topic-card reveal"><span>07</span><h3>PySide6 e Qt 6</h3><p>Construção de interfaces gráficas em Python com janelas, formulários, tabelas e comunicação entre ações por meio de sinais e slots.</p></article>
+        <article class="topic-card reveal"><span>08</span><h3>SQLite e persistência</h3><p>Armazenamento local das movimentações financeiras em banco de dados, mantendo as informações disponíveis entre as execuções.</p></article>
       </div>
     </section>
 
@@ -82,9 +84,77 @@
       </div>
     </section>
 
+    <section id="gestao-financeira" class="section finance-project-section">
+      <div class="section-heading reveal"><p class="eyebrow">Projeto prático · Entregue</p><h2>Sistema de Gestão Financeira</h2><p>Aplicação desktop desenvolvida em Python para apresentar o PySide6 e aplicar, de forma visual, os principais conceitos de Programação Orientada a Objetos.</p></div>
+
+      <div class="finance-project-hero reveal">
+        <div>
+          <span>Python · PySide6 · Qt 6 · SQLite</span>
+          <h3>Finanças organizadas em uma interface simples e funcional.</h3>
+        </div>
+        <p>O sistema registra receitas e despesas, calcula o saldo e mantém os dados salvos localmente. A atividade transforma conceitos de POO em uma aplicação que pode ser executada, usada e demonstrada sem depender apenas do terminal.</p>
+      </div>
+
+      <div class="finance-feature-grid">
+        <article class="reveal"><span>01</span><h3>CRUD completo</h3><p>Cadastro, consulta, edição e exclusão de receitas e despesas, com confirmação antes de remover uma movimentação.</p></article>
+        <article class="reveal"><span>02</span><h3>Resumo financeiro</h3><p>Exibição dos totais de receitas, despesas e saldo, atualizados de acordo com os registros e filtros aplicados.</p></article>
+        <article class="reveal"><span>03</span><h3>Filtros combinados</h3><p>Pesquisa por texto, tipo, categoria e período para localizar movimentações específicas com mais facilidade.</p></article>
+        <article class="reveal"><span>04</span><h3>Persistência local</h3><p>Uso do SQLite para guardar as informações sem a necessidade de instalar ou configurar um servidor de banco de dados.</p></article>
+        <article class="reveal"><span>05</span><h3>Exportação CSV</h3><p>Geração de um arquivo que pode ser aberto em planilhas para conferência, organização ou uso externo dos dados.</p></article>
+        <article class="reveal"><span>06</span><h3>Dados de demonstração</h3><p>Inclusão rápida de registros pelo menu <strong>Arquivo → Inserir dados de demonstração</strong>, facilitando a apresentação do sistema.</p></article>
+      </div>
+
+      <div class="finance-oop-block reveal">
+        <div class="finance-oop-intro">
+          <p class="eyebrow">POO aplicada</p>
+          <h3>Os conceitos aparecem no funcionamento real do projeto.</h3>
+          <p>A interface, as regras e o banco foram separados em camadas. Isso evita concentrar todas as responsabilidades em um único arquivo e deixa o código mais claro para evoluir.</p>
+        </div>
+        <div class="finance-oop-grid">
+          <article><h4>Classes e objetos</h4><p>Movimentações, filtros, resumos, serviços e janelas são representados por classes com responsabilidades próprias.</p></article>
+          <article><h4>Herança e super()</h4><p><code>MainWindow</code> herda de <code>QMainWindow</code> e <code>TransactionDialog</code> herda de <code>QDialog</code>, reutilizando recursos do Qt com <code>super()</code>.</p></article>
+          <article><h4>Encapsulamento</h4><p>As regras financeiras ficam no serviço e o acesso aos dados no repositório, evitando que a interface manipule diretamente o banco.</p></article>
+          <article><h4>Abstração</h4><p>Cada camada oferece operações claras e esconde detalhes internos, como validações, conversões monetárias e comandos SQL.</p></article>
+          <article><h4>Composição</h4><p>A aplicação combina banco, repositório, serviço e janela principal para formar o sistema completo.</p></article>
+          <article><h4>Polimorfismo</h4><p>As janelas especializadas mantêm os comportamentos comuns dos componentes do Qt e acrescentam as necessidades do sistema.</p></article>
+          <article><h4>Sinais e slots</h4><p>Cliques em botões, menus e tabelas são conectados aos métodos que devem responder a cada ação do usuário.</p></article>
+          <article><h4>Objetos de dados</h4><p>As <em>dataclasses</em> organizam movimentações, filtros e resumos em estruturas simples, tipadas e coerentes.</p></article>
+        </div>
+      </div>
+
+      <div class="finance-architecture reveal" aria-label="Fluxo simplificado da arquitetura">
+        <span>Interface PySide6</span><b>→</b><span>FinanceService</span><b>→</b><span>TransactionRepository</span><b>→</b><span>SQLite</span>
+      </div>
+
+      <div class="finance-run reveal">
+        <div>
+          <p class="eyebrow">Como executar</p>
+          <h3>Do download à primeira movimentação.</h3>
+        </div>
+        <ol>
+          <li><span>01</span>Baixe e extraia o projeto em uma pasta do computador.</li>
+          <li><span>02</span>Use Python 3.10 ou superior e instale as dependências com <code>python -m pip install -r requirements.txt</code>.</li>
+          <li><span>03</span>Inicie a aplicação com <code>python main.py</code>.</li>
+          <li><span>04</span>Cadastre uma movimentação ou use os dados de demonstração disponíveis no menu Arquivo.</li>
+        </ol>
+      </div>
+
+      <div class="finance-downloads reveal" aria-label="Arquivos do projeto">
+        <a class="download-link" href="assets/atividades/tecnicas-programacao/gestao-financeira-pyside6/gestao-financeira-pyside6.zip" download>Baixar projeto em ZIP ↓</a>
+        <a class="download-link" href="assets/atividades/tecnicas-programacao/gestao-financeira-pyside6/apresentacao-pyside6-e-poo.pptx" download>Baixar apresentação em PPTX ↓</a>
+        <a class="download-link" href="assets/atividades/tecnicas-programacao/gestao-financeira-pyside6/README.md" download>Baixar instruções de execução ↓</a>
+      </div>
+    </section>
+
     <section id="atividades" class="section activities-section expandable-tasks">
       <div class="section-heading reveal"><p class="eyebrow">Atividades registradas</p><h2>Prática e documentação</h2><p>Enunciados, soluções e trabalhos desenvolvidos ao longo da disciplina.</p></div>
       <div class="tasks-grid">
+        <article class="task-card completed-task reveal">
+          <span class="task-type">Projeto prático · Entregue</span>
+          <h3>Sistema de Gestão Financeira com PySide6</h3>
+          <p>Desenvolvimento de uma aplicação desktop em Python com interface visual, orientação a objetos, persistência em SQLite, filtros e exportação de dados.</p>
+          <a class="download-link" href="#gestao-financeira">Ver projeto no portfólio ↑</a>
+        </article>
         <article class="task-card reveal"><span class="task-type">13/08/2026 · Revisão</span><h3>Identificação dos conceitos de POO</h3><p>Nos cenários da clínica veterinária e do restaurante, identificar classes, objetos, herança, polimorfismo e encapsulamento.</p></article>
         <article class="task-card reveal">
           <span class="task-type">20/08/2026 · Trabalho em grupo · Concluído</span>
