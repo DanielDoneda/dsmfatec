@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Laboratório interativo que demonstra cinco pilares de SEO e contextualiza sua aplicação em SPA e MPA.">
+  <meta name="theme-color" content="#0e1726">
+  <title>SEO Lab | Cinco pilares na prática</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="SEO Lab — início"><span class="brand-mark" aria-hidden="true">↗</span><span>SEO <em>Lab</em></span></a>
+    <nav aria-label="Navegação principal">
+      <a href="#laboratorio">Laboratório</a><a href="#arquiteturas">SPA × MPA</a><a href="#roteiro">Roteiro</a>
+    </nav>
+    <button class="theme-button" id="themeButton" type="button" aria-label="Ativar tema escuro" aria-pressed="false">◐</button>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">DESENVOLVIMENTO WEB III · FATEC</p>
+        <h1 id="hero-title">SEO fica mais claro quando você <span>vê a diferença.</span></h1>
+        <p class="hero-text">Ative e desative boas práticas em cinco experimentos. Observe como visibilidade, velocidade, experiência, estrutura e acessibilidade trabalham juntas.</p>
+        <div class="hero-actions"><a class="button primary" href="#laboratorio">Começar experimento</a><a class="button secondary" href="#arquiteturas">Entender SPA e MPA</a></div>
+        <p class="microcopy">Demonstração educativa · sem coleta de dados · funciona offline</p>
+      </div>
+      <div class="score-card" aria-label="Painel de progresso dos cinco pilares">
+        <div class="score-top"><div><span>Índice do laboratório</span><strong id="scoreValue">100</strong><small>/100</small></div><div class="score-ring" id="scoreRing" aria-hidden="true"></div></div>
+        <div class="score-bar"><i id="scoreBar"></i></div>
+        <p id="scoreMessage" role="status">Todos os pilares estão otimizados.</p>
+        <div class="mini-pills" aria-hidden="true"><span>01 Visibilidade</span><span>02 Desempenho</span><span>03 UX</span><span>04 Conteúdo</span><span>05 A11y</span></div>
+      </div>
+    </section>
+
+    <section class="lab-section" id="laboratorio" aria-labelledby="lab-title">
+      <div class="section-heading"><div><p class="eyebrow">LABORATÓRIO INTERATIVO</p><h2 id="lab-title">Cinco pilares, cinco experiências</h2></div><p>Use o controle de cada cartão para comparar a versão otimizada com a versão problemática. O índice geral acompanha suas escolhas.</p></div>
+
+      <article class="experiment" data-pillar="visibility">
+        <div class="experiment-head"><span class="number">01</span><div><p class="eyebrow">VISIBILIDADE</p><h3>Como sua página aparece na busca?</h3></div><label class="switch"><input class="optimizer" type="checkbox" checked><span aria-hidden="true"></span><b>Otimizado</b></label></div>
+        <div class="experiment-body visibility-demo">
+          <form class="editor" id="serpForm"><label for="pageTitle">Título da página <span id="titleCount">43/60</span></label><input id="pageTitle" maxlength="75" value="TaskFlow Pro | Gestão de tarefas sem atrito"><label for="pageDescription">Meta description <span id="descriptionCount">133/160</span></label><textarea id="pageDescription" maxlength="190">Organize tarefas, acompanhe projetos e aumente a produtividade da sua equipe com o TaskFlow Pro. Comece agora de forma simples.</textarea><p class="hint">Edite os campos e veja a prévia mudar em tempo real.</p></form>
+          <div class="preview-panel"><span class="panel-label">PRÉVIA ILUSTRATIVA</span><div class="serp"><p class="serp-url">taskflowpro.com.br › gestão-de-tarefas</p><h4 id="serpTitle">TaskFlow Pro | Gestão de tarefas sem atrito</h4><p id="serpDescription">Organize tarefas, acompanhe projetos e aumente a produtividade da sua equipe com o TaskFlow Pro. Comece agora de forma simples.</p></div><div class="explain"><b>O que o buscador entende</b><p id="visibilityExplain">Título descritivo, resumo útil e URL legível dão contexto antes mesmo do clique.</p></div></div>
+        </div>
+      </article>
+
+      <article class="experiment" data-pillar="performance">
+        <div class="experiment-head"><span class="number">02</span><div><p class="eyebrow">DESEMPENHO</p><h3>Cada recurso tem um custo</h3></div><label class="switch"><input class="optimizer" type="checkbox" checked><span aria-hidden="true"></span><b>Otimizado</b></label></div>
+        <div class="experiment-body performance-demo">
+          <div class="load-stage"><div class="mock-image"><span>TF</span><i id="imageFormat">WEBP</i></div><button class="button primary" id="loadButton" type="button">Simular carregamento</button><p id="loadStatus" class="hint" role="status">Pronto para testar.</p></div>
+          <div class="metrics"><div><span>Tamanho da imagem</span><strong id="sizeMetric">84 KB</strong><small id="sizeDelta">−91% de transferência</small></div><div><span>Tempo simulado</span><strong id="timeMetric">0,4 s</strong><small>em uma conexão móvel</small></div><div><span>Formato</span><strong id="formatMetric">WebP</strong><small id="formatNote">compactação moderna</small></div></div>
+        </div>
+      </article>
+
+      <article class="experiment" data-pillar="experience">
+        <div class="experiment-head"><span class="number">03</span><div><p class="eyebrow">EXPERIÊNCIA DO USUÁRIO</p><h3>Encontrar o caminho também é SEO</h3></div><label class="switch"><input class="optimizer" type="checkbox" checked><span aria-hidden="true"></span><b>Otimizado</b></label></div>
+        <div class="experiment-body ux-demo"><div class="phone"><div class="phone-bar"><b>TaskFlow</b><button id="phoneMenu" type="button" aria-expanded="false">☰<span class="sr-only">Abrir menu</span></button></div><div class="phone-nav" id="phoneNav"><button type="button">Início</button><button type="button">Tarefas</button><button type="button">Projetos</button></div><div class="phone-content"><span>Meu dia</span><h4>3 tarefas prioritárias</h4><button type="button">Ver minhas tarefas</button></div></div><div class="test-card"><span class="panel-label">TESTE RÁPIDO</span><h4>Encontre suas tarefas</h4><p id="uxInstruction">Abra o menu e selecione “Tarefas”. A navegação tem rótulos claros e resposta imediata.</p><div class="task-progress"><i id="uxProgress"></i></div><p class="result" id="uxResult" role="status">Aguardando interação…</p></div></div>
+      </article>
+
+      <article class="experiment" data-pillar="content">
+        <div class="experiment-head"><span class="number">04</span><div><p class="eyebrow">ORGANIZAÇÃO DO CONTEÚDO</p><h3>Uma hierarquia que humanos e robôs leem</h3></div><label class="switch"><input class="optimizer" type="checkbox" checked><span aria-hidden="true"></span><b>Otimizado</b></label></div>
+        <div class="experiment-body content-demo"><div class="outline" id="contentOutline"><div class="node h1"><span>H1</span><b>Gestão de projetos</b></div><div class="branch"><div class="node h2"><span>H2</span><b>Recursos principais</b></div><div class="branch"><div class="node h3"><span>H3</span><b>Quadro Kanban</b></div><div class="node h3"><span>H3</span><b>Relatórios</b></div></div><div class="node h2"><span>H2</span><b>Planos e preços</b></div></div></div><div class="code-card"><div class="code-dots">● ● ● <span>HTML SEMÂNTICO</span></div><pre id="semanticCode"><code>&lt;main&gt;
+  &lt;h1&gt;Gestão de projetos&lt;/h1&gt;
+  &lt;section&gt;
+    &lt;h2&gt;Recursos principais&lt;/h2&gt;
+    &lt;h3&gt;Quadro Kanban&lt;/h3&gt;
+  &lt;/section&gt;
+&lt;/main&gt;</code></pre></div></div>
+      </article>
+
+      <article class="experiment" data-pillar="accessibility">
+        <div class="experiment-head"><span class="number">05</span><div><p class="eyebrow">ACESSIBILIDADE</p><h3>SEO bom não deixa pessoas para trás</h3></div><label class="switch"><input class="optimizer" type="checkbox" checked><span aria-hidden="true"></span><b>Otimizado</b></label></div>
+        <div class="experiment-body accessibility-demo"><div class="contact-card" id="contactCard"><h4>Receba novidades</h4><label for="demoEmail" id="emailLabel">Seu melhor e-mail</label><input id="demoEmail" type="email" placeholder="voce@exemplo.com"><button type="button" id="subscribeButton">Quero receber</button></div><div class="checks"><div id="checkContrast"><span>✓</span><p><b>Contraste adequado</b><small>Texto legível sobre o fundo</small></p></div><div id="checkLabel"><span>✓</span><p><b>Campos identificados</b><small>Label associado ao e-mail</small></p></div><div id="checkKeyboard"><span>✓</span><p><b>Foco visível</b><small>Pressione Tab para conferir</small></p></div><button class="button secondary" id="focusTest" type="button">Iniciar teste de teclado</button></div></div>
+      </article>
+    </section>
+
+    <section class="architecture" id="arquiteturas" aria-labelledby="architecture-title"><div class="section-heading light"><div><p class="eyebrow">CONTEXTO DO PROJETO EXISTENTE</p><h2 id="architecture-title">Do TaskFlow Pro ao SEO Lab</h2></div><p>O projeto anterior compara a mesma aplicação de tarefas em SPA e MPA. Este laboratório muda o foco: mostra as práticas de SEO que precisam existir em qualquer arquitetura.</p></div><div class="architecture-grid"><article><span class="architecture-badge">SPA</span><h3>Uma página, rotas dinâmicas</h3><p>O conteúdo muda sem recarregar o documento. Para páginas públicas, é preciso cuidar de URLs, metadados por rota e conteúdo indexável — muitas vezes com SSR ou pré-renderização.</p><ul><li>Atualizar título e descrição por rota</li><li>Oferecer URLs compartilháveis</li><li>Garantir HTML acessível ao rastreador</li></ul></article><div class="connector" aria-hidden="true"><span>SEO</span><i></i></div><article><span class="architecture-badge">MPA</span><h3>Vários documentos HTML</h3><p>Cada URL recebe uma página completa. Metadados e conteúdo específico ficam naturalmente separados, mas desempenho, semântica e acessibilidade ainda dependem de boa implementação.</p><ul><li>Metadados próprios por página</li><li>Links internos descritivos</li><li>Evitar recursos repetidos e pesados</li></ul></article></div><p class="architecture-conclusion"><b>Conclusão:</b> MPA costuma facilitar o SEO inicial de conteúdo; SPA também pode ter ótimo SEO quando oferece renderização e metadados adequados. A arquitetura não substitui os cinco pilares.</p></section>
+
+    <section class="presentation" id="roteiro" aria-labelledby="presentation-title"><div><p class="eyebrow">APRESENTAÇÃO EM 3 MINUTOS</p><h2 id="presentation-title">Um roteiro curto para demonstrar</h2></div><ol><li><span>01</span><p><b>Comece pelo índice</b>Explique que SEO envolve mais do que palavras-chave.</p></li><li><span>02</span><p><b>Desative cada pilar</b>Mostre a mudança concreta e o impacto no índice.</p></li><li><span>03</span><p><b>Faça dois testes</b>Simule o carregamento e navegue apenas com Tab.</p></li><li><span>04</span><p><b>Feche com SPA × MPA</b>Destaque que as duas exigem boas práticas.</p></li></ol><button class="button primary" id="resetLab" type="button">Restaurar laboratório</button></section>
+  </main>
+  <footer><div class="brand"><span class="brand-mark" aria-hidden="true">↗</span><span>SEO <em>Lab</em></span></div><p>Projeto acadêmico · Desenvolvimento Web III — FATEC</p><a href="#inicio">Voltar ao topo ↑</a></footer>
+</body>
+</html>
